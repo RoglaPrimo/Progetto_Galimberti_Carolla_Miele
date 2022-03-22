@@ -25,7 +25,16 @@
 
 <body>
     <div class="contenitore_login">
-
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+            <table>
+                <tr>
+                    <td>Email:</td> <td><input type="text" name="Email" value="<?php echo $Email; ?>" required></td>
+                </tr>
+                <tr>
+                    <td>Password:</td> <td><input type="text" name="Password" value="<?php echo $Password; ?>" required></td>
+                </tr>
+            </table>
+        </form>
     </div>
 </body>
 
