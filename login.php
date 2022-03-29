@@ -39,6 +39,8 @@
             <p><input type="submit" value="Accedi"></p>
         </form>
 
+        <p>Non ti sei ancora registrato? <a href = 'registrazione.php'>Registrati</a></p> 
+
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if( empty($_POST["Email"]) or empty($_POST["Password"])) {
@@ -56,11 +58,26 @@
                                     FROM $tabella 
                                     WHERE Email=".$_POST["Email"]."
                                         AND Password=".$_POST["Password"];
-                    echo $myquery;
+                    
+
+                    $ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
+
+                    echo "";
+                    if($ris->num_rows == 0){
+						echo "<p>Utente non trovato o password errata</p>";
+						$conn->close();
+					} 
+					else {
+						$_SESSION["username"]=$username;
+                        $_SESSION["tipologia"]=$_POST["tipologia"];
+												
+						$conn->close();
+						header("location: pagine/home.php");
+
+					}
                 }
             }
         ?>
-
 
 
     </div>
