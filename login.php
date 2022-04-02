@@ -21,6 +21,7 @@
     <div class="contenitore_login">
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <h1>LOGIN</h1>
+        <p></p>
         <h2>Inserisci le tue credenziali:</h2>
             <table>
                 <tr>
