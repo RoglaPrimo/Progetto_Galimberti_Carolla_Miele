@@ -1,7 +1,7 @@
 <?php
     session_start ();
 
-    $server="localhost";
+    $db_servername="localhost";
     $db_name="miele";
     $db_username="root";
     $db_password="";
@@ -14,7 +14,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Pagina di login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,15 +25,15 @@
         <h2>Inserisci le tue credenziali:</h2>
             <table>
                 <tr>
-                    <td>Email:</td> <td><input type="text" name="Email" value="" required></td>
+                    <td>Email:</td> <td><input type="text" name="E_mail" value="" required></td>
                 </tr>
                 <tr>
-                    <td>Password:</td> <td><input type="text" name="Password" value="" required></td>
+                    <td>Password:</td> <td><input type="password" name="Password" value="" required></td>
                 </tr>
                 <tr>
                     <td>
-                        Acquirente <input type="radio" name="tipologia" value="acquirenti">
-                        Apicoltore <input type="radio" name="tipologia" value="apicoltori">
+                        Acquirente <input type="radio" name="tipologia" value="cliente">
+                        Apicoltore <input type="radio" name="tipologia" value="apicoltore">
                     </td>
                 </tr>
             </table>
@@ -43,7 +44,7 @@
 
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if( empty($_POST["Email"]) or empty($_POST["Password"])) {
+                if( empty($_POST["E_mail"]) or empty($_POST["Password"])) {
                     echo "<p>Campi lasciati vuoti</p>";
                 } else {
                     $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
@@ -52,12 +53,17 @@
                     }
 
 
-                    $tabella=$_POST["tipologia"];
+                    $tipologia=$_POST["tipologia"];
                     
-                    $myquery = "SELECT Email, Password 
-                                    FROM $tabella 
-                                    WHERE Email=".$_POST["Email"]."
-                                        AND Password=".$_POST["Password"];
+                    $myquery = "SELECT E_mail, Password 
+                                    FROM $tipologia 
+                                    WHERE E_mail=".$_POST["E_mail"]."
+                                        AND Password=".$_POST["Password"]."";
+
+                    // $myquery = "SELECT E_mail, Password 
+                    //                 FROM $tipologia 
+                    //                 WHERE E_mail='.$_POST["E_mail"].'
+                    //                     AND password='.$_POST["Password"].'";
                     
 
                     $ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
@@ -68,7 +74,7 @@
 						$conn->close();
 					} 
 					else {
-						$_SESSION["username"]=$username;
+						$_SESSION["E_mail"]=$E_mail;
                         $_SESSION["tipologia"]=$_POST["tipologia"];
 												
 						$conn->close();
