@@ -13,25 +13,25 @@
 	    header('location: logout.php');
 	}
 
-    // $username = $_SESSION["username"];
-	// //echo $username;
+    $E_mail = $_SESSION["E_mail"];
+	//echo $username;
 
-	// $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
-	// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// 	if(isset($_POST['cod_libri'])){
-	// 		$libri = $_POST['cod_libri'];
-	// 	} else {
-	// 		$libri = array();
-	// 	}
-	// 	// $libri = isset($_POST['cod_libri']) ? $_POST['cod_libri'] : array(); // è un if else
-	// 	foreach($libri as $libro) {
-  	// 		//echo $libro . '<br/>';
-  	// 		$sql = "UPDATE libri
-  	// 				SET username_utente = '$username'
-  	// 				WHERE cod_libro = '$libro'";
-	// 		$conn->query($sql) or die("<p>Query fallita!</p>");
-	// 	}
-	}
+	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		if(isset($_POST['Codice_barattolo'])){
+			$Codice_barattolo = $_POST['Codice_barattolo'];
+		} else {
+			$Codice_barattolo = array();
+		}
+		// $libri = isset($_POST['cod_libri']) ? $_POST['cod_libri'] : array(); // è un if else
+		foreach($Codice_barattolo as $Codice_barattolo) {
+  			//echo $libro . '<br/>';
+  			$sql = "UPDATE barattolo
+  					SET Codice_cliente = '$Codice_cliente'
+  					WHERE Codice_barattolo = '$Codice_barattolo'";
+			$conn->query($sql) or die("<p>Query fallita!</p>");
+		}
+}
 ?>
 
 <!DOCTYPE html>
@@ -126,7 +126,7 @@
                 FROM barattolo JOIN miele ON barattolo.Nome_miele=miele.Nome
                             JOIN apicoltore ON apicoltore.Codice_apicoltore=barattolo.Codice_apicoltore
                             JOIN magazzino ON magazzino.Codice_magazzino=barattolo.Codice_magazzino
-                WHERE barattolo.Nome_miele IN ($Acacia, $Castagno, $Tiglio, $Tarassaco, $Rododendro, $Millefiori, $Timo, $Girasole, $Erba_medica, $Eucalipto) AND barattolo.Capienza=Capienza AND barattolo.Codice_cliente="NULL""
+                WHERE barattolo.Nome_miele IN ($Acacia, $Castagno, $Tiglio, $Tarassaco, $Rododendro, $Millefiori, $Timo, $Girasole, $Erba_medica, $Eucalipto) AND barattolo.Capienza=Capienza AND barattolo.Codice_cliente=NULL";
 
         $ris = $conn->query($sql) or die("<p>Query fallita!</p>");
 
@@ -164,10 +164,8 @@
     </form>
     </div>
     <?php 
-		include('footer.php')
+		include('footer.php');
+	$conn->close();
 	?>
 </body>
 </html>
-<?php
-	$conn->close();
-?>

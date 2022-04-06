@@ -20,7 +20,6 @@
             <li><a href="pagine/registrazione.php">Registrati</a></li>
             <li><a href="pagine/login.php">Login</a> </li>
         </ul>
-
     </div>
 
 </body>
