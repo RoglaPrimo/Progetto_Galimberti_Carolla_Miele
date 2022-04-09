@@ -59,8 +59,8 @@ $db_password = "";
 
                 $myquery = "SELECT E_mail, Password 
                                     FROM $tipologia 
-                                    WHERE E_mail=" . $_POST["E_mail"] . "
-                                        AND Password=" . $_POST["Password"] . "";
+                                    WHERE E_mail='" . $_POST["E_mail"] . "'
+                                        AND Password='" . $_POST["Password"] . "'";
 
                 // $myquery = "SELECT E_mail, Password 
                 //                 FROM $tipologia 

@@ -121,6 +121,7 @@
             $Girasole = $_POST["Girasole"];
             $Erba_medica = $_POST["Erba_medica"];
             $Eucalipto = $_POST["Eucalipto"];
+        };
 
         $sql = "SELECT barattolo.Codice_barattolo, miele.Nome, barattolo.Capienza, baratttolo.Data_confezionamento, barattolo.Data_immagazzinamento, apicoltore.Nome, magazzino.Codice_magazzino
                 FROM barattolo JOIN miele ON barattolo.Nome_miele=miele.Nome

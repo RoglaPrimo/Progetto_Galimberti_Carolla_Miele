@@ -99,6 +99,7 @@ else $tipologia = "";
 
         <p>
             <?php
+            $tipologia=$_POST["tipologia"];
             if (isset($_POST["E_mail"]) and isset($_POST["Password"])) {
                 if ($_POST["E_mail"] == "" or $_POST["Password"] == "") {
                     echo "Email e password non possono essere vuoti!";
@@ -110,8 +111,8 @@ else $tipologia = "";
                         die("<p>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
                     }
 
-                    $myquery = "SELECT E_mail 
-						    FROM cliente and apicoltore 
+                    $myquery = "SELECT E_mail
+						    FROM $tipologia
 						    WHERE E_mail='" . $_POST["E_mail"] . "'";
                     //echo $myquery;
 
