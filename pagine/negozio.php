@@ -21,7 +21,7 @@
 		if(isset($_POST['Codice_barattolo'])){
 			$Codice_barattolo = $_POST['Codice_barattolo'];
 		} else {
-			$Codice_barattolo = array();
+			$bellissimo = array();
 		}
 		// $libri = isset($_POST['cod_libri']) ? $_POST['cod_libri'] : array(); // è un if else
 		foreach($Codice_barattolo as $Codice_barattolo) {
@@ -137,25 +137,32 @@
             echo "<tr> <th></th> <th>Codice del barattolo</th> <th>Tipo di miele</th> <th>Capienza del barattolo</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th> <th>Apicoltore</th> <th>Codice magazzino</th></tr>";
         
             foreach($ris as $riga){
-                if ($riga["username_utente"]){
-                    $preso = "disabled";
-                    $disponibile = "No";
-                }
-                else {
-                    $preso = "";
-                    $disponibile = "Sì"; 
-                }
-                $cod_libro = $riga["cod_libro"];
-                $titolo = $riga["titolo"];
-                $nome = $riga["nome"];
-                $cognome = $riga["cognome"];
+                // if ($riga["E_mail"]){
+                //     $preso = "disabled";
+                //     $disponibile = "No";
+                // }
+                // else {
+                //     $preso = "";
+                //     $disponibile = "Sì"; 
+                // }
+                $Codice_barattolo = $riga["barattolo.Codice_barattolo"];
+                $MieleNome = $riga["miele.Nome"];
+                $Capienza = $riga["barattolo.Capienza"];
+                $Data_confezionamento = $riga["baratttolo.Data_confezionamento"];
+                $Data_immagazzinamento = $riga["baratttolo.Data_immagazzinamento"];
+                $ApicoltoreNome = $riga["apicoltore.Nome"];
+                $Codice_magazzino = $riga["magazzino.Codice_magazzino"];
                 
                 echo "
                     <tr>
-                        <td><input type='checkbox' name='cod_libri[]' value='$cod_libro' $preso/></td>
-                        <td>$titolo</td>
-                        <td>$nome $cognome</td>
-                        <td>$disponibile</td>
+                        <td><input type='checkbox' name='Codice_barattolo[]' value='$bellissimo'/></td>
+                        <td>$Codice_barattolo</td>
+                        <td>$MieleNome</td>
+                        <td>$Capienza</td>
+                        <td>$Data_confezionamento</td>
+                        <td>$Data_immagazzinamento</td>
+                        <td>$ApicoltoreNome</td>
+                        <td>$Codice_magazzino</td>
                     </tr>";
             }
             echo "</table>";
