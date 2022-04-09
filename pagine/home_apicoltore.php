@@ -11,8 +11,8 @@
 <body>
     <div class="menu">
         <ul>
-            <li><a href="pagine/informazioni.php">Chi siamo</a></li>
-            <li><a href="pagine/miele.php">I nostri prodotti</a></li>
+            <li><a href="informazioni.php">Chi siamo</a></li>
+            <li><a href="miele.php">I nostri prodotti</a></li>
         </ul>
         <ul>
             <li><a href="magazzino.php">Magazzino</a></li>

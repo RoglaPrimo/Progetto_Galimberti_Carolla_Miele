@@ -11,12 +11,12 @@
 <body>
     <div class="menu">
         <ul>
-            <li><a href="pagine/informazioni.php">Chi siamo</a></li>
-            <li><a href="pagine/miele.php">I nostri prodotti</a></li>
+            <li><a href="informazioni.php">Chi siamo</a></li>
+            <li><a href="miele.php">I nostri prodotti</a></li>
         </ul>
         <ul>
             <li><a href="negozio.php">Negozio</a></li>
-            <li><a href="ordini.php">I tuoi ordini</a></li>
+            <li><a href="ordini.php">Il tuo carrello</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
 
