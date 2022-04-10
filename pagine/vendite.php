@@ -52,12 +52,58 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td>Prezzo barattolo: </td>
-                    <td></td>
-                </tr>
             </table>
+            <p><input type="submit" value="Invia"></p>
         </form>
     </div>
+
+    <php
+    $Miele=$_POST["Miele"]
+    $Capienza=$_POST["Capienza"]
+
+    $sql=" SELECT miele.Prezzo
+        From Miele
+        WHERE Miele.nome = barattolo.Capienza= $Miele
+        ";
+
+    $ris = $conn->query($sql2) or die("<p>Query fallita!</p>")-$conn->error;
+
+    $prezzo=($ris)*($Capienza);
+
+    $sql2=" "UPDATE barattolo
+  					SET barattolo.prezzo = $prezzo
+  					WHERE cod_libro = '$libro'"; 
+    
+    echo "<p> Al termine della transazione verrai paggato $prezzo$<p>"
+    echo "<p> Ora selezione un magazzino libero a cui consegnare il tuo prodotto<p>"
+    <form action="vendite.php" method="post">
+            <table>
+               <tr>
+                $sql3 =" SELECT Magazzino.nome
+                From magazzino
+                Having count()
+                 ";
+                $ris = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
+                
+                 foreach($ris as $riga) {
+                    <td> $riga["NomeMagazzino"] </td>
+                    <td> $riga["Indizrizzo"]</td>
+                    <td> <input type="radio" name="Magazzino" value=" $riga["NomeMagazzino"]  " required> </td>
+
+                   }
+               </tr>
+            </table>
+            <p><input type="submit" value="Accedi"></p>
+        </form>
+       <?php
+        $Magazzinoscelto=$_POST["Magazzino"];
+       
+       $sql3 =" UPDATE magazzino
+        SET magazzino
+        
+
+       ?>
+
+    ?>
 </body>
 </html>
