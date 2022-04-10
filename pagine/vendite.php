@@ -57,53 +57,68 @@
         </form>
     </div>
 
-    <php
-    $Miele=$_POST["Miele"]
-    $Capienza=$_POST["Capienza"]
+    <?php
+        $Miele=$_POST["Miele"];
+        $Capienza=$_POST["Capienza"];
+        $_SESSION["Miele"]=$Miele;
+        $_SESSION["Capienza"]=$Capienza;
 
-    $sql=" SELECT miele.Prezzo
-        From Miele
-        WHERE Miele.nome = barattolo.Capienza= $Miele
-        ";
+        $sql="SELECT miele.Prezzo
+                FROM miele
+                WHERE miele.Nome = $Miele";
 
-    $ris = $conn->query($sql2) or die("<p>Query fallita!</p>")-$conn->error;
+        $ris = $conn->query($sql) or die("<p>Query fallita!</p>")-$conn->error;
 
-    $prezzo=($ris)*($Capienza);
+        $prezzo=($ris)*($Capienza/1000);
 
-    $sql2=" "UPDATE barattolo
-  					SET barattolo.prezzo = $prezzo
-  					WHERE cod_libro = '$libro'"; 
+        // $sql2="UPDATE barattolo
+  	    // 			SET barattolo.Prezzo = '$prezzo'
+  	    // 			WHERE cod_libro = '$libro'"; 
     
-    echo "<p> Al termine della transazione verrai paggato $prezzo$<p>"
-    echo "<p> Ora selezione un magazzino libero a cui consegnare il tuo prodotto<p>"
+    
+        echo "<p> Al termine della transazione verrai pagato $prezzo</p>";
+        echo "<table>";
+        echo "<p> Ora seleziona un magazzino libero in cui il tuo prodotto verrà depositato: </p>";
+        echo "<tr> <th></th> <th>Codice del magazzino</th> <th>Comune</th> <th>Via</th> <th>Civico</th> </tr>";
+    ?>
+
     <form action="vendite.php" method="post">
-            <table>
-               <tr>
-                $sql3 =" SELECT Magazzino.nome
-                From magazzino
-                Having count()
-                 ";
-                $ris = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
+               <?php
+                $sql2 =" SELECT magazzino.Codice_magazzino, magazzino.Città, magazzino.Via, magazzino.Civico, COUNT (barattolo.Codice_barattolo) AS Numero_barattoli
+                            FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
+                            GROUP BY magazzino.Codice_magazzino
+                            HAVING Numero_barattoli<magazzino.Capienza";
+                
+                $ris2 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
                 
                  foreach($ris as $riga) {
-                    <td> $riga["NomeMagazzino"] </td>
-                    <td> $riga["Indizrizzo"]</td>
-                    <td> <input type="radio" name="Magazzino" value=" $riga["NomeMagazzino"]  " required> </td>
+                    $Codice_magazzino = $riga["magazzino.Codice_magazzino"];
+                    $Città = $riga["magazzino.Città"];
+                    $Via = $riga["magazzino.Via"];
+                    $Civico = $riga["magazzino.Civico"];
 
-                   }
-               </tr>
-            </table>
-            <p><input type="submit" value="Accedi"></p>
+                    echo "
+                        <tr>
+                            <td><input type='radio' name='Codice_magazzino' value=''/></td>
+                            <td>$Codice_magazzino</td>
+                            <td>$Città</td>
+                            <td>$Via</td>
+                            <td>$Civico</td>
+                        </tr>
+                    ";
+                };
+                echo "</table>";
+                ?>
+            <p><input type="submit" value="Aggiungi al deposito"></p>
         </form>
-       <?php
-        $Magazzinoscelto=$_POST["Magazzino"];
-       
-       $sql3 =" UPDATE magazzino
-        SET magazzino
-        
 
-       ?>
+    <?php
+        $sql3 = "SELECT apicoltore.Codice_apicoltore
+                    FROM apicoltore
+                    WHERE apicoltore.E";
 
+        $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Data_immagazzinamento, Prezzo)
+                    VALUES ('$_SESSION["Capienza"]', '$Codice_apicoltore', '$Codice_magazzino', '$_SESSION["Miele"]', '$Data_confezionamento', '$Data_immagazzinamento', '$Prezzo')";
     ?>
 </body>
 </html>
