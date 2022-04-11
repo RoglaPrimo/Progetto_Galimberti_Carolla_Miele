@@ -120,7 +120,15 @@ else $tipologia = "";
                     if ($ris->num_rows > 0) {
                         echo "<p>Sei già registrato! Vai alla pagina di login: <a href = 'login.php'>Vai alla pagina di login</a></p>";
                     } else {
-
+                        $_SESSION["E_mail"]=$E_mail;
+                        $_SESSION["Password"]=$Password;
+                        $_SESSION["Nome"]=$Nome;
+                        $_SESSION["Cognome"]=$Cognome;
+                        $_SESSION["Numero_telefono"]=$Numero_telefono;
+                        $_SESSION["Città"]=$Città;
+                        $_SESSION["Via"]=$Civico;
+                        $_SESSION["Civico"]=$Civico;
+                        
                         $myquery = "INSERT INTO $tipologia (E_mail, Password, Nome, Cognome, Numero_telefono, Città, Via, Civico)
                                     VALUES ('$E_mail', '$Password', '$Nome', '$Cognome','$Numero_telefono','$Città','$Via','$Civico')";
 

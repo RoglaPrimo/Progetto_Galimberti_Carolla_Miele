@@ -10,7 +10,7 @@
 	    header('location: logout.php');
 	}
 
-    $E_mail = $_SESSION["E_mail"];
+   // $E_mail = $_SESSION["E_mail"];
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +70,7 @@
         $ris = $conn->query($sql) or die("<p>Query fallita!</p>")-$conn->error;
 
         $prezzo=($ris)*($Capienza/1000);
+        $_SESSION["Prezzo"]=$Prezzo;
 
         // $sql2="UPDATE barattolo
   	    // 			SET barattolo.Prezzo = '$prezzo'
@@ -89,13 +90,17 @@
                             GROUP BY magazzino.Codice_magazzino
                             HAVING Numero_barattoli<magazzino.Capienza";
                 
-                $ris2 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
+                $ris2 = $conn->query($sql2) or die("<p>Query fallita!</p>")-$conn->error;
                 
                  foreach($ris as $riga) {
                     $Codice_magazzino = $riga["magazzino.Codice_magazzino"];
                     $Città = $riga["magazzino.Città"];
                     $Via = $riga["magazzino.Via"];
                     $Civico = $riga["magazzino.Civico"];
+                    $_SESSION["Codice_magazzino"]=$Codice_magazzino;
+                    $_SESSION["Città"]=$Codice_magazzino;
+                    $_SESSION["Via"]=$Codice_magazzino;
+                    $_SESSION["Civico"]=$Codice_magazzino;
 
                     echo "
                         <tr>
@@ -115,10 +120,12 @@
     <?php
         $sql3 = "SELECT apicoltore.Codice_apicoltore
                     FROM apicoltore
-                    WHERE apicoltore.E";
+                    WHERE apicoltore.numerotelefono ='$_SESSION["Numero_Telefono"]'";
+
+        $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
 
         $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Data_immagazzinamento, Prezzo)
-                    VALUES ('$_SESSION["Capienza"]', '$Codice_apicoltore', '$Codice_magazzino', '$_SESSION["Miele"]', '$Data_confezionamento', '$Data_immagazzinamento', '$Prezzo')";
+                    VALUES ('$_SESSION["Capienza"]', '$ris3', ' $_SESSION["Codice_magazzino"]', '$_SESSION["Miele"]', $_session["Data_confezionamento"]', '$_SESSION["$Data_immagazzinamento"]', '$_SESSION["Prezzo"]')";
     ?>
 </body>
 </html>
