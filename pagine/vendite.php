@@ -9,6 +9,8 @@
     if( $_SESSION["tipologia"]!="cliente"){
 	    header('location: logout.php');
 	}
+    $Capienza=$_SESSION["Capienza"];
+    $Numero_telefono= $_SESSION["Numero_telefono"];
 
    // $E_mail = $_SESSION["E_mail"];
 ?>
@@ -51,6 +53,12 @@
                             </tr>
                         </table>
                     </td>
+                </tr>
+                <tr>
+                <td>Data di confezionamento: </td> <td><input type="date" name="Data_confezionamento" value="<?php $Data_confezionameto?>"></td>
+                </tr>
+                <tr>
+                
                 </tr>
             </table>
             <p><input type="submit" value="Invia"></p>
@@ -98,9 +106,9 @@
                     $Via = $riga["magazzino.Via"];
                     $Civico = $riga["magazzino.Civico"];
                     $_SESSION["Codice_magazzino"]=$Codice_magazzino;
-                    $_SESSION["Città"]=$Codice_magazzino;
-                    $_SESSION["Via"]=$Codice_magazzino;
-                    $_SESSION["Civico"]=$Codice_magazzino;
+                    $_SESSION["Città"]=$Città;
+                    $_SESSION["Via"]=$Via;
+                    $_SESSION["Civico"]=$Civico;
 
                     echo "
                         <tr>
@@ -118,14 +126,20 @@
         </form>
 
     <?php
+        $Codice_magazzino=$_SESSION["Codice_magazzino"];
+        $Città=$_SESSION["Città"];
+        $Via=$_SESSION["Via"];
+        $Civico=$_SESSION["Civico"];
+        $Prezzo= $_SESSION["Prezzo"];
+        $Miele= $_SESSION["Miele"];
         $sql3 = "SELECT apicoltore.Codice_apicoltore
                     FROM apicoltore
-                    WHERE apicoltore.numerotelefono ='$_SESSION["Numero_Telefono"]'";
+                    WHERE apicoltore.Numero_telefono ='$Numero_telefono'";
 
         $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
 
-        $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Data_immagazzinamento, Prezzo)
-                    VALUES ('$_SESSION["Capienza"]', '$ris3', ' $_SESSION["Codice_magazzino"]', '$_SESSION["Miele"]', $_session["Data_confezionamento"]', '$_SESSION["$Data_immagazzinamento"]', '$_SESSION["Prezzo"]')";
+        $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Prezzo)
+                    VALUES ('$Capienza', '$ris3', ' $Codice_magazzino', '$Miele', $Data_confezionamento',  '$Prezzo')";
     ?>
 </body>
 </html>
