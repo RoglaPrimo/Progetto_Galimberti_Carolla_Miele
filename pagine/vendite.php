@@ -1,16 +1,24 @@
 <?php
     session_start();
 
+    if(isset($_POST["Capienza"])) $Capienza = $_POST["Capienza"];  else $Capienza = "";
+    if(isset($_SESSION["Numero_telefono"])) $Numero_telefono = $_SESSION["Numero_telefono"];  else $Numero_telefono = "";
+    if(isset($_POST["Codice_magazzino"])) $Codice_magazzino = $_POST["Codice_magazzino"];  else $Codice_magazzino = "";
+    if(isset($_POST["Codice_apicoltore"])) $Codice_apicoltore = $_POST["Codice_apicoltore"];  else $Codice_apicoltore = "";
+    if(isset($_POST["Miele"])) $Miele = $_POST["Miele"];  else $Miele = "";
+    if(isset($_POST["Data_confezionamento"])) $Data_confezionamento = $_POST["Data_confezionamento"];  else $Data_confezionamento = "";
+    // if(isset($_POST["Prezzo"])) $Prezzo = $_POST["Prezzo"];  else $Prezzo = "";
+
     $db_servername = "localhost";
     $db_name = "miele";
     $db_username = "root";
     $db_password = "";
 
-    if( $_SESSION["tipologia"]!="cliente"){
+    if( $_SESSION["tipologia"]!="apicoltore"){
 	    header('location: logout.php');
 	}
-    $Capienza=$_SESSION["Capienza"];
-    $Numero_telefono= $_SESSION["Numero_telefono"];
+    // $Capienza=$_SESSION["Capienza"];
+    // $Numero_telefono= $_SESSION["Numero_telefono"];
 
    // $E_mail = $_SESSION["E_mail"];
 ?>
@@ -38,24 +46,24 @@
         </ul>
     </div>
 
-    <h1></h1>
+    <h1>INSERISCI LE INFORMAZIONI DEL BARATTOLO CHE VUOI VENDERE:</h1>
     <div>
         <form action="vendite.php" method="post">
             <table>
                 <tr>
-                    <td>Tipo di miele: </td> <td><input type="text" name="Miele" value=""></td>
+                    <td>Tipo di miele: </td> <td><input type="text" name="Miele" value="Acacia"></td>
                 </tr>
                 <tr>
                     <td>
                         <table>
                             <tr>
-                                <td>Capienza del barattolo: </td> <td><input type="radio" name="Capienza" value="250">250 g</td> <td><input type="radio" name="Capienza" value="500">500 g</td> <td><input type="radio" name="Capienza" value="1000">1000 g</td>
+                                <td>Capienza del barattolo: </td> <td><input type="radio" name="Capienza" value="250" checked>250 g</td> <td><input type="radio" name="Capienza" value="500">500 g</td> <td><input type="radio" name="Capienza" value="1000">1000 g</td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                <td>Data di confezionamento: </td> <td><input type="date" name="Data_confezionamento" value="<?php $Data_confezionameto?>"></td>
+                <td>Data di confezionamento: </td> <td><input type="date" name="Data_confezionamento" <?php echo "value = '$Data_confezionamento'" ?>></td>
                 </tr>
                 <tr>
                 
@@ -71,13 +79,17 @@
         $_SESSION["Miele"]=$Miele;
         $_SESSION["Capienza"]=$Capienza;
 
-        $sql="SELECT miele.Prezzo
+
+        $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+
+        $sql="SELECT Prezzo
                 FROM miele
-                WHERE miele.Nome = $Miele";
+                WHERE Nome = '$Miele'";
 
-        $ris = $conn->query($sql) or die("<p>Query fallita!</p>")-$conn->error;
-
-        $prezzo=($ris)*($Capienza/1000);
+        $ris = $conn->query($sql) or die("<p>Query fallita!: " . $conn->connect_error . "</p>");
+        $row = $ris->fetch_assoc();
+        // echo $row['Prezzo'];
+        $Prezzo=($row["Prezzo"])*floatval(($Capienza/1000));
         $_SESSION["Prezzo"]=$Prezzo;
 
         // $sql2="UPDATE barattolo
@@ -85,7 +97,7 @@
   	    // 			WHERE cod_libro = '$libro'"; 
     
     
-        echo "<p> Al termine della transazione verrai pagato $prezzo</p>";
+        echo "<p> Al termine della transazione verrai pagato $Prezzo,00 euro</p>";
         echo "<table>";
         echo "<p> Ora seleziona un magazzino libero in cui il tuo prodotto verrà depositato: </p>";
         echo "<tr> <th></th> <th>Codice del magazzino</th> <th>Comune</th> <th>Via</th> <th>Civico</th> </tr>";
@@ -93,14 +105,14 @@
 
     <form action="vendite.php" method="post">
                <?php
-                $sql2 =" SELECT magazzino.Codice_magazzino, magazzino.Città, magazzino.Via, magazzino.Civico, COUNT (barattolo.Codice_barattolo) AS Numero_barattoli
-                            FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
-                            GROUP BY magazzino.Codice_magazzino
-                            HAVING Numero_barattoli<magazzino.Capienza";
+                $sql2 =" SELECT magazzino.Codice_magazzino AS Codice_magazzino, magazzino.Città AS Città, magazzino.Via AS Via, magazzino.Civico AS Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza AS Capienza
+                            FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=Codice_magazzino
+                            GROUP BY Codice_magazzino
+                            HAVING Numero_barattoli < Capienza";
                 
-                $ris2 = $conn->query($sql2) or die("<p>Query fallita!</p>")-$conn->error;
+                $ris2 = $conn->query($sql2) or die("<p>Query fallita!-$conn->error</p>");
                 
-                 foreach($ris as $riga) {
+                 foreach($ris2 as $riga) {
                     $Codice_magazzino = $riga["magazzino.Codice_magazzino"];
                     $Città = $riga["magazzino.Città"];
                     $Via = $riga["magazzino.Via"];

@@ -138,9 +138,9 @@
                 FROM barattolo JOIN miele ON barattolo.Nome_miele=miele.Nome
                             JOIN apicoltore ON apicoltore.Codice_apicoltore=barattolo.Codice_apicoltore
                             JOIN magazzino ON magazzino.Codice_magazzino=barattolo.Codice_magazzino
-                WHERE barattolo.Nome_miele IN ($Acacia, $Castagno, $Tiglio, $Tarassaco, $Rododendro, $Millefiori, $Timo, $Girasole, $Erba_medica, $Eucalipto) AND barattolo.Capienza= '" .$_POST["Capienza"]. "' AND barattolo.Codice_cliente=NULL  ";
+                WHERE barattolo.Nome_miele IN ('$Acacia', '$Castagno', '$Tiglio', '$Tarassaco', '$Rododendro', '$Millefiori', '$Timo', '$Girasole', '$Erba_medica', '$Eucalipto') AND barattolo.Capienza= " .$_POST["Capienza"]. " AND barattolo.Codice_cliente=NULL";
 
-        $ris = $conn->query($sql) or die("<p>Query fallita!</p>")-$conn->error;
+        $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
 
         if ($ris->num_rows > 0) {
             echo "<p>Scegli tra i barattoli trovati secondo le tue preferenze.</p>";
