@@ -76,6 +76,7 @@ $db_password = "";
                     $conn->close();
                 } else {
                     $_SESSION["E_mail"] = $E_mail;
+                    $_SESSION["Password"] = $Password;
                     $_SESSION["tipologia"] = $_POST["tipologia"];
 
                     $conn->close();
