@@ -121,24 +121,31 @@
 
     <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
     <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST" and (isset($_POST["Acacia"]) or isset($_POST["Castagno"]) or isset($_POST["Tiglio"]) or isset($_POST["Tarassaco"]) or isset($_POST["Rododendro"]) or isset($_POST["Millefiori"]) or isset($_POST["Timo"]) or isset($_POST["Girasole"]) or isset($_POST["Erba_medica"]) or isset($_POST["Eucalipto"]))) {
-            // $Acacia = $_POST["Acacia"];
-            // $Castagno = $_POST["Castagno"];
-            // $Tiglio = $_POST["Tiglio"];
-            // $Tarassaco = $_POST["Tarassaco"];
-            // $Rododendro = $_POST["Rododendro"];
-            // $Millefiori = $_POST["Millefiori"];
-            // $Timo = $_POST["Timo"];
-            // $Girasole = $_POST["Girasole"];
-            // $Erba_medica = $_POST["Erba_medica"];
-            // $Eucalipto = $_POST["Eucalipto"];
-        };
 
-        $sql = "SELECT barattolo.Codice_barattolo, miele.Nome, barattolo.Capienza, baratttolo.Data_confezionamento, barattolo.Data_immagazzinamento, apicoltore.Nome, magazzino.Codice_magazzino, barattolo.Prezzo
+    $mieli = array();
+
+    if(!empty($Acacia)) array_push($mieli, $Acacia);
+    if(!empty($Castagno)) array_push($mieli, $Castagno);
+    if(!empty($Tiglio)) array_push($mieli, $Tiglio);
+    if(!empty($Tarassaco)) array_push($mieli, $Tarassaco);
+    if(!empty($Rododendro)) array_push($mieli, $Rododendro);
+    if(!empty($Millefiori)) array_push($mieli, $Millefiori);
+    if(!empty($Timo)) array_push($mieli, $Timo);
+    if(!empty($Girasole)) array_push($mieli, $Girasole);
+    if(!empty($Erba_medica)) array_push($mieli, $Erba_medica);
+    if(!empty($Eucalipto)) array_push($mieli, $Eucalipto);
+    
+        $sql = "SELECT barattolo.Codice_barattolo, miele.Nome, barattolo.Capienza, barattolo.Data_confezionamento, barattolo.Data_immagazzinamento, apicoltore.Nome, magazzino.Codice_magazzino, barattolo.Prezzo
                 FROM barattolo JOIN miele ON barattolo.Nome_miele=miele.Nome
                             JOIN apicoltore ON apicoltore.Codice_apicoltore=barattolo.Codice_apicoltore
                             JOIN magazzino ON magazzino.Codice_magazzino=barattolo.Codice_magazzino
-                WHERE barattolo.Nome_miele IN ('$Acacia', '$Castagno', '$Tiglio', '$Tarassaco', '$Rododendro', '$Millefiori', '$Timo', '$Girasole', '$Erba_medica', '$Eucalipto') AND barattolo.Capienza= " .$_POST["Capienza"]. " AND barattolo.Codice_cliente=NULL";
+                WHERE barattolo.Nome_miele IN ("; 
+                
+                foreach($mieli as $miele){
+                    $sql = $sql."'$miele', ";
+                }
+                
+                $sql = $sql.") AND barattolo.Capienza= " .$_POST["Capienza"]. " AND barattolo.Codice_cliente= NULL ";
 
         $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
 
@@ -183,7 +190,7 @@
     </form>
     </div>
     <?php 
-		include('footer.php');
+		// include('footer.php');
 	    $conn->close();
 	?>
 </body>
