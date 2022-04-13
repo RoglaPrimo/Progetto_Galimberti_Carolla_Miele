@@ -90,22 +90,13 @@ $db_password = "";
                                     FROM apicoltore
                                     WHERE apicoltore.E_mail= '$E_mail' AND apicoltore.Password='$Password'";
                     
-                        $ris = $conn->query($myquery) or die("<p>Query fallita! " . $conn->error . "</p>");
+                        $ris = $conn->query($sql) or die("<p>Query fallita! " . $conn->error . "</p>");
 
-                        // $row = $ris->fetch_assoc();
-                        foreach($ris as $row) {
-                            echo $row["codice"];
-                        }
-                        echo $row["Codice_apicoltore"];
-                        $_SESSION["Codice_utente"]= $row["Codice_apicoltore"];
-
-
-
-                        echo $_SESSION["Codice_utente"];
+                        $row = $ris->fetch_assoc();
+                        $_SESSION["Codice_utente"]= $row["codice"];
 
                         $conn->close();
-
-                        // header("location: home_apicoltore.php");
+                        header("location: home_apicoltore.php");
                     } else {
                         header("location: home_cliente.php");
                     }

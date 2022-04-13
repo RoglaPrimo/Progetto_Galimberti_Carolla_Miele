@@ -39,6 +39,7 @@ body {
     z-index: 100;
     padding: 20px;
     justify-content: center;
+    border: 2px solid black;
 }
 
 .header__menu{
@@ -64,10 +65,104 @@ body {
     font-size: larger;
 }
 
+.header__img {
+    width: 50px;
+    height: 120px;
+}
 
+.header__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
 
 
 /* index */
 
+/* miele */
 
+.container__Miele__img {
+    width: 40%;
+    float: left;
+    /* height: 80vh;
+    margin-top: 15vh;
+    margin-bottom: 5vh; */
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.container__Miele__img img
+{
+    width:100%;
+    height:100%;
+    width: fit-content;
+    align-items: center;
+}
+
+.pipi img
+{
+    width: 72%;
+    height: 100%;
+}    
+
+.container__Miele__text {
+    width: 60%;
+    padding: 20px;
+    float: left;
+}
+
+.introduzione__miele
+{
+    width: 100%;
+    margin: 120px auto;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.introduzione__miele h1
+{
+    font-family: 'Lobster',cursive;
+    font-size: larger;
+    margin: auto;
+    width: 100%;
+    font-size: 50px;
+    padding: 20px;
+}
+
+.container__Miele__text
+{
+    padding: 20px;
+}
+
+.container__Miele__text h2
+{
+    font-family: 'Lobster',cursive;
+    font-size: larger;
+    margin: auto;
+    width: 100%;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 0;
+}
+
+.container__Miele__text p
+{
+    padding: 5px;
+    padding-left: 0;
+}
+
+.Acacia
+{
+    border: 15px solid rgb(255, 217, 0);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
+.Castagno
+{
+    border: 15px solid rgba(165, 42, 42, 0.521);
+    border-radius: 15px;
+    margin: 30px 50px;
+}

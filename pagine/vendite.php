@@ -51,7 +51,7 @@
         <form action="vendite.php" method="post">
             <table>
                 <tr>
-                    <td>Tipo di miele: </td> <td><input type="text" name="Miele" value="Acacia"></td>
+                    <td>Tipo di miele: </td> <td><input type="text" name="Miele" value = ""></td>
                 </tr>
                 <tr>
                     <td>
@@ -74,11 +74,13 @@
     </div>
 
     <?php
-        $Miele=$_POST["Miele"];
-        $Capienza=$_POST["Capienza"];
-        $_SESSION["Miele"]=$Miele;
-        $_SESSION["Capienza"]=$Capienza;
-
+        if ($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            $Miele=$_POST["Miele"];
+            $Capienza=$_POST["Capienza"];
+            $_SESSION["Miele"]=$Miele;
+            $_SESSION["Capienza"]=$Capienza;
+        }
 
         $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 
@@ -89,7 +91,7 @@
         $ris = $conn->query($sql) or die("<p>Query fallita!: " . $conn->connect_error . "</p>");
         $row = $ris->fetch_assoc();
         // echo $row['Prezzo'];
-        $Prezzo=($row["Prezzo"])*floatval(($Capienza/1000));
+        $Prezzo=($row["Prezzo"])*floatval((intval($Capienza)/1000));
         $_SESSION["Prezzo"]=$Prezzo;
 
         // $sql2="UPDATE barattolo
@@ -105,18 +107,18 @@
 
     <form action="vendite.php" method="post">
                <?php
-                $sql2 =" SELECT magazzino.Codice_magazzino AS Codice_magazzino, magazzino.Città AS Città, magazzino.Via AS Via, magazzino.Civico AS Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza AS Capienza
-                            FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=Codice_magazzino
-                            GROUP BY Codice_magazzino
+                $sql2 =" SELECT magazzino.Codice_magazzino, magazzino.Città AS Città, magazzino.Via AS Via, magazzino.Civico AS Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza AS Capienza
+                            FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
+                            GROUP BY magazzino.Codice_magazzino
                             HAVING Numero_barattoli < Capienza";
                 
                 $ris2 = $conn->query($sql2) or die("<p>Query fallita!-$conn->error</p>");
                 
                  foreach($ris2 as $riga) {
-                    $Codice_magazzino = $riga["magazzino.Codice_magazzino"];
-                    $Città = $riga["magazzino.Città"];
-                    $Via = $riga["magazzino.Via"];
-                    $Civico = $riga["magazzino.Civico"];
+                    $Codice_magazzino = $riga["Codice_magazzino"];
+                    $Città = $riga["Città"];
+                    $Via = $riga["Via"];
+                    $Civico = $riga["Civico"];
                     $_SESSION["Codice_magazzino"]=$Codice_magazzino;
                     $_SESSION["Città"]=$Città;
                     $_SESSION["Via"]=$Via;
@@ -124,7 +126,7 @@
 
                     echo "
                         <tr>
-                            <td><input type='radio' name='Codice_magazzino' value=''/></td>
+                            <td><input type='radio' name='Codice_magazzino' value='$Codice_magazzino'/></td>
                             <td>$Codice_magazzino</td>
                             <td>$Città</td>
                             <td>$Via</td>
@@ -138,20 +140,28 @@
         </form>
 
     <?php
-        $Codice_magazzino=$_SESSION["Codice_magazzino"];
-        $Città=$_SESSION["Città"];
-        $Via=$_SESSION["Via"];
-        $Civico=$_SESSION["Civico"];
-        $Prezzo= $_SESSION["Prezzo"];
-        $Miele= $_SESSION["Miele"];
-        $sql3 = "SELECT apicoltore.Codice_apicoltore
-                    FROM apicoltore
-                    WHERE apicoltore.Numero_telefono ='$Numero_telefono'";
+        if ($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            $Codice_magazzino=$_SESSION["Codice_magazzino"];
+            // $Città=$_SESSION["Città"];
+            // $Via=$_SESSION["Via"];
+            // $Civico=$_SESSION["Civico"];
+            $Prezzo= $_SESSION["Prezzo"];
+            $Miele= $_SESSION["Miele"];
+            // $sql3 = "SELECT apicoltore.Codice_apicoltore
+            //             FROM apicoltore
+            //             WHERE apicoltore.Numero_telefono ='$Numero_telefono'";
 
-        $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
+            // $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
 
-        $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Prezzo)
-                    VALUES ('$Capienza', '$ris3', ' $Codice_magazzino', '$Miele', $Data_confezionamento',  '$Prezzo')";
+            $Codice_apicoltore=$_SESSION["Codice_utente"];
+            $Data_immagazzinamento=date("d/m/y");
+        }
+            
+        $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Data_immagazzinamento, Prezzo)
+                    VALUES ('$Capienza', '$Codice_apicoltore', ' $Codice_magazzino', '$Miele', $Data_confezionamento', '$Data_immagazzinamento', '$Prezzo')";
+        
+        $conn->close();
     ?>
 </body>
 </html>

@@ -31,7 +31,7 @@
 
     <?php
         $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-        echo "$Codice_utente";
+        // echo "$Codice_utente";
         // $sql= "SELECT apicoltore.Codice_apicoltore AS Codice
         //         FROM apicoltore
         //         WHERE apicoltore.E_mail= '$E_mail' AND apicoltore.Password='$Password'";
@@ -49,43 +49,67 @@
 
         while($riga = $ris1->fetch_assoc())
         {
-            $Codice_magazzino=$riga["magazzino.Codice_magazzino"];
-            $Città=$riga["magazzino.Città"];
+            $Codice_magazzino = $riga["Codice_magazzino"];
+            $Città=$riga["Città"];
 
             $sql2="SELECT barattolo.Codice_barattolo, barattolo.Capienza, barattolo.Nome_miele, barattolo.Data_confezionamento, barattolo.Data_immagazzinamento
                 FROM barattolo
-                WHERE barattolo.Codice_apicoltore= $Codice_apicoltore AND barattolo.Codice_magazzino=$Codice_magazzino";
+                WHERE barattolo.Codice_apicoltore= $Codice_utente AND barattolo.Codice_magazzino=$Codice_magazzino";
         
             $ris2 = $conn->query($sql2) or die("<p>Query fallita!-$conn->error</p>");
 
-            echo "
+            // echo "
+            //     <table>
+            //         <tr> <th></th> <th>Codice del magazzino</th> <th>Comune</th></tr>
+            //         <tr>
+            //                 <td>$Codice_magazzino</td>
+            //                 <td>$Città</td>
+            //         </tr>
+            //     ";
+
+            if($ris2->num_rows == 0)
+            {
+                echo "
                 <table>
                     <tr> <th></th> <th>Codice del magazzino</th> <th>Comune</th></tr>
                     <tr>
                             <td>$Codice_magazzino</td>
                             <td>$Città</td>
                     </tr>
-                    <tr> <th></th> <th>Codice del barattolo</th> <th>Capienza del barattolo</th> <th>Tipo di miele</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th></tr>
+                    <tr><td></td><td></td><td><p>Nessuno dei tuoi barattoli è ancora all'interno del magazzino</p></td></tr>
                 ";
-
-            while($pippo = $ris2->fetch_assoc())
-            {
-                $Codice_barattolo=$pippo["barattolo.Codice_barattolo"];
-                $Capienza=$pippo["barattolo.Capienza"];
-                $Nome_miele=$pippo["barattolo.Nome_miele"];
-                $Data_confezionamento=$pippo["barattolo.Data_confezionamento"];
-                $Data_immagazinamento=$pippo["barattolo.Data_immagazinamento"];
-
+            } 
+            
+            else{
                 echo "
+                <table>
+                    <tr> <th></th> <th>Codice del magazzino</th> <th>Comune</th></tr>
                     <tr>
-                        <td>$Codice_barattolo</td>
-                        <td>$Capienza</td>
-                        <td>$Nome_miele</td>
-                        <td>$Data_confezionamento</td>
-                        <td>$Data_immagazinamento</td>
+                            <td>$Codice_magazzino</td>
+                            <td>$Città</td>
                     </tr>
                 ";
-            };
+                echo "<tr> <th></th> <th>Codice del barattolo</th> <th>Capienza del barattolo</th> <th>Tipo di miele</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th></tr>";
+
+                while($pippo = $ris2->fetch_assoc())
+                {
+                    $Codice_barattolo=$pippo["Codice_barattolo"];
+                    $Capienza=$pippo["Capienza"];
+                    $Nome_miele=$pippo["Nome_miele"];
+                    $Data_confezionamento=$pippo["Data_confezionamento"];
+                    $Data_immagazinamento=$pippo["Data_immagazzinamento"];
+
+                    echo "
+                        <tr>
+                            <td>$Codice_barattolo</td>
+                            <td>$Capienza</td>
+                            <td>$Nome_miele</td>
+                            <td>$Data_confezionamento</td>
+                            <td>$Data_immagazinamento</td>
+                        </tr>
+                    ";
+                };
+            }
             echo "</table>";
         };
     ?>
