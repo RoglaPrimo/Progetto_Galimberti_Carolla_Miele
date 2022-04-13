@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+if (isset($_POST["E_mail"])) $E_mail = $_POST["E_mail"]; else $E_mail = "";
+if (isset($_POST["Password"])) $Password = $_POST["Password"]; else $Password = "";
+
 $db_servername = "localhost";
 $db_name = "miele";
 $db_username = "root";
@@ -75,13 +78,34 @@ $db_password = "";
                     echo "<p>Utente non trovato o password errata</p>";
                     $conn->close();
                 } else {
-                    $_SESSION["E_mail"] = $E_mail;
-                    $_SESSION["Password"] = $Password;
-                    $_SESSION["tipologia"] = $_POST["tipologia"];
+                    
 
-                    $conn->close();
+                    
+                    // $_SESSION["E_mail"] = $_POST["E_mail"];
+                    // $_SESSION["Password"] = $Password;
+                    $_SESSION["tipologia"] = $_POST["tipologia"];
+                    
                     if ($tipologia == "apicoltore") {
-                        header("location: home_apicoltore.php");
+                            $sql= "SELECT apicoltore.Codice_apicoltore AS codice
+                                    FROM apicoltore
+                                    WHERE apicoltore.E_mail= '$E_mail' AND apicoltore.Password='$Password'";
+                    
+                        $ris = $conn->query($myquery) or die("<p>Query fallita! " . $conn->error . "</p>");
+
+                        // $row = $ris->fetch_assoc();
+                        foreach($ris as $row) {
+                            echo $row["codice"];
+                        }
+                        echo $row["Codice_apicoltore"];
+                        $_SESSION["Codice_utente"]= $row["Codice_apicoltore"];
+
+
+
+                        echo $_SESSION["Codice_utente"];
+
+                        $conn->close();
+
+                        // header("location: home_apicoltore.php");
                     } else {
                         header("location: home_cliente.php");
                     }

@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    if(isset($_SESSION["E_mail"])) $E_mail = $_SESSION["E_mail"];  else header('location: login.php');
+    if(isset($_SESSION["Codice_utente"])) $Codice_utente = $_SESSION["Codice_utente"];  else header('location: login.php');
     if(isset($_SESSION["Numero_telefono"])) $Numero_telefono = $_SESSION["Numero_telefono"];  else $Numero_telefono = "";
-    if(isset($_SESSION["Password"])) $Password = $_SESSION["Password"];  header('location: login.php');
+    // if(isset($_SESSION["Password"])) $Password = $_SESSION["Password"];  header('location: login.php');
 
     $db_servername = "localhost";
     $db_name = "miele";
@@ -31,14 +31,14 @@
 
     <?php
         $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-        echo "$E_mail $Password";
-        $sql= "SELECT apicoltore.Codice_apicoltore AS Codice
-                FROM apicoltore
-                WHERE apicoltore.E_mail= '$E_mail' AND apicoltore.Password='$Password'";
+        echo "$Codice_utente";
+        // $sql= "SELECT apicoltore.Codice_apicoltore AS Codice
+        //         FROM apicoltore
+        //         WHERE apicoltore.E_mail= '$E_mail' AND apicoltore.Password='$Password'";
 
-        $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
-        $row = $ris->fetch_assoc();
-        $Codice_apicoltore= $row["Codice"];
+        // $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
+        // $row = $ris->fetch_assoc();
+        // $Codice_apicoltore= $row["Codice"];
 
         $sql1= "SELECT magazzino.Codice_magazzino, magazzino.Città
                 FROM magazzino";
