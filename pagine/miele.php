@@ -38,7 +38,7 @@
             <?php
                 if($tipologia=="cliente")
                 {
-                    echo"
+                 ?>
                         <ul class="header__menu">
                             <li><a href="miele.php">I nostri prodotti</a></li>
                             <li><a href="negozio.php">Negozio</a></li>
@@ -48,8 +48,9 @@
                             <li><a href="ordini.php">Il tuo carrello</a></li>
                             <li><a href="logout.php">Logout</a> </li>
                         </ul>
-                    ";
+                   
                 }
+            <?php
                 if($tipologia=="apicoltore")
                 {
                     echo "
