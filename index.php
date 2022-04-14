@@ -17,12 +17,15 @@
 
 <body>
     <div class="header">
-            <ul class="header__menu">
-                <li><a href="pagine/informazioni.php">Chi siamo</a></li>
-                <li><a href="pagine/miele.php">I nostri prodotti</a></li>
-                <li><a href="pagine/registrazione.php">Registrati</a></li>
-                <li><a href="pagine/login.php">Login</a> </li>
-            </ul>
+        <ul class="header__menu">
+            <li><a href="index.php">Chi siamo</a></li>
+            <li><a href="miele.php">I nostri prodotti</a></li>
+            <li class="header__img">
+                <a href="index.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
+            </li>
+            <li><a href="registrazione.php">Registrati</a></li>
+            <li><a href="login.php">Login</a> </li>
+        </ul>
     </div>
 
 </body>

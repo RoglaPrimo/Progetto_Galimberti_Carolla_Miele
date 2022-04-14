@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION["tipologia"])) $tipologia = $_SESSION["tipologia"]; else $tipologia = "";
+
+    $db_servername = "localhost";
+    $db_name = "miele";
+    $db_username = "root";
+    $db_password = "";
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -24,15 +35,50 @@
 </head>
 <body>
     <div class="header">
-            <ul class="header__menu">
-                <li><a href="informazioni.php">Chi siamo</a></li>
-                <li><a href="miele.php">I nostri prodotti</a></li>
-                <li class="header__img">
-                    <a href="../index.php"><img src="immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
-                </li>
-                <li><a href="registrazione.php">Registrati</a></li>
-                <li><a href="login.php">Login</a> </li>
-            </ul>
+            <?php
+                if($tipologia=="cliente")
+                {
+                    echo"
+                        <ul class="header__menu">
+                            <li><a href="miele.php">I nostri prodotti</a></li>
+                            <li><a href="negozio.php">Negozio</a></li>
+                            <li class="header__img">
+                                <a href="../home_cliente.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
+                            </li>
+                            <li><a href="ordini.php">Il tuo carrello</a></li>
+                            <li><a href="logout.php">Logout</a> </li>
+                        </ul>
+                    ";
+                }
+                if($tipologia=="apicoltore")
+                {
+                    echo "
+                        <ul class="header__menu">
+                            <li><a href="miele.php">I nostri prodotti</a></li>
+                            <li><a href="magazzino.php">Magazzino</a></li>
+                            <li class="header__img">
+                                <a href="../home_apicoltore.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
+                            </li>
+                            <li><a href="vendite.php">Le tue vendite</a></li>
+                            <li><a href="logout.php">Logout</a> </li>
+                        </ul>
+                    ";
+                }
+                if($tipologia=="")
+                {
+                    echo "
+                        <ul class="header__menu">
+                            <li><a href="index.php">Chi siamo</a></li>
+                            <li><a href="miele.php">I nostri prodotti</a></li>
+                            <li class="header__img">
+                                <a href="../index.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
+                            </li>
+                            <li><a href="registrazione.php">Registrati</a></li>
+                            <li><a href="login.php">Login</a> </li>
+                        </ul>
+                    ";
+                }
+            ?>
     </div>
 
     <div class="introduzione__miele">
@@ -42,7 +88,7 @@
 
     <div class="Acacia group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Acacia-removebg-preview.png" alt="">
+            <img src="../immagini/Acacia-removebg-preview.png" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE D'ACACIA</h2>
@@ -60,7 +106,7 @@
 
     <div class="Castagno group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Castagno-removebg-preview.png" alt="">
+            <img src="../immagini/Castagno-removebg-preview.png" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
@@ -73,7 +119,7 @@
 
     <div class="Castagno group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Castagno.jpg" alt="">
+            <img src="../immagini/Castagno.jpg" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
@@ -104,7 +150,7 @@
 
     <div class="Castagno group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Castagno.jpg" alt="">
+            <img src="../immagini/Castagno.jpg" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
@@ -117,7 +163,7 @@
 
     <div class="Castagno group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Castagno.jpg" alt="">
+            <img src="../immagini/Castagno.jpg" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
@@ -130,7 +176,7 @@
 
     <div class="Acacia group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Acacia.jpg" alt="">
+            <img src="../immagini/Acacia.jpg" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE D'ACACIA</h2>
@@ -148,7 +194,7 @@
 
     <div class="Castagno group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Castagno.jpg" alt="">
+            <img src="../immagini/Castagno.jpg" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
@@ -161,7 +207,7 @@
 
     <div class="Castagno group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Castagno.jpg" alt="">
+            <img src="../immagini/Castagno.jpg" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
@@ -174,7 +220,7 @@
 
     <div class="Castagno group">
         <div class="container__Miele__img reveal3 pipi">
-            <img src="immagini/Castagno.jpg" alt="">
+            <img src="../immagini/Castagno.jpg" alt="">
         </div>
         <div class="container__Miele__text">
             <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
