@@ -27,5 +27,8 @@
 
 <body>
     <h1>Ecco qui il suo carrello:</h1>
+    <?php
+        include('footer.php');
+    ?>
 </body>
 </html>

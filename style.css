@@ -19,7 +19,7 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
     font-size: 16px;
     background-color: white;
     background-size: cover;
@@ -76,7 +76,10 @@ body {
     color: white;
 } */
 
-.header__menu li a:hover{
+
+
+#active
+{
     color: orange;
 }
 
@@ -100,16 +103,48 @@ body {
     padding: 15px;
     /* background: linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.7)), url() no-repeat center center;  */
     background-size: cover;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     height: 100vh;
     z-index: 0;
     /* top: 150px; */
 }
 
+#container__Intro
+{
+    height: 160vh;
+    overflow-x: hidden;
+}
+
+#padding
+{
+    margin: 5px;
+}
+
+#backwhite
+{
+    background-color: rgba(250, 159, 40, 0.904);
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 60px;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    height: auto;
+}
+
+.tab_dati_personali{
+	/* width: 500px; */
+	text-align: left;
+	margin: auto;
+    /* font-weight: bold; */
+    font-size: 23px;
+    font-family: 'Lobster',cursive;
+}
+
 .container__Intro::after {
     content: ' ';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -139,6 +174,21 @@ body {
     padding: 10px;
 }
 
+.container__Intro__text h1 {
+    width: 100%;
+    /* float: left; */
+    font-family: 'Lobster',cursive;
+    font-size:xx-large;
+    text-align: center;
+    font-size: 50px;
+    padding: 10px;
+}
+
+#smaller
+{
+    font-size: 40px;
+}
+
 .container__Intro__text p {
     width: 100%;
     z-index: 10;
@@ -150,7 +200,7 @@ body {
 }
 
 #video-back {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     min-width: 100%;
@@ -159,6 +209,42 @@ body {
     overflow-x: hidden;
 }
 
+#video-back2
+{
+    height: 100%;
+}
+
+.Login
+{
+    padding-left: 10px;
+    padding-top: 10px;
+    font-family: 'Lobster',cursive;
+}
+
+.caselle
+{
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+#accedi
+{
+    margin-top: 10px;
+    background-color: white;
+    font-family: 'Lobster',cursive;
+    padding: 5px;
+}
+
+#corsivo
+{
+    font-family: 'Lobster',cursive;
+}
+
+#corsivo a:hover{
+    color: white;
+}
 
 
 /* miele */
@@ -259,3 +345,87 @@ body {
     margin: 30px 50px;
 }
 
+
+
+/* footer */
+.footer
+{
+    margin: auto;
+    height: 100px;
+    text-align: center;
+    font-family: 'Lobster',cursive;
+    font-size: 20px;
+    color: white;
+    position: relative;
+    z-index: 5;
+    justify-content: center;
+}
+
+.footer--dark
+{
+    color: black;
+}
+
+.ul{
+    display:inline-block;
+}
+
+.riduci
+{
+    width: 30px;
+    height: 30px;
+}
+
+.riduci img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.Mattavelli
+{
+    /* width: 70%;
+    margin-left: 15%;
+    margin-right: 15%; */
+    padding-top: 20px;
+    padding-bottom: 15px;
+    font-size: 20px;
+}
+
+.Mattavelli ul li p{
+    font-size: 15px;
+}
+
+#id li
+{
+    width: 30%;
+    padding: 0;
+    margin: 0;
+}
+
+#id li div
+{
+    display: inline-block;
+    width: 20%;
+    justify-content: center;
+}
+
+/* #black
+{
+    color: black;
+} */
+
+.header__menu li a:hover{
+    color: orange;
+}
+
+#black
+{
+    color: black;
+}
+
+#black:hover
+{
+    color: orange;
+}

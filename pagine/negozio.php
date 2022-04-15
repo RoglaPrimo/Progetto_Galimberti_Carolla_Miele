@@ -190,7 +190,7 @@
     </form>
     </div>
     <?php 
-		// include('footer.php');
+		include('footer.php');
 	    $conn->close();
 	?>
 </body>
