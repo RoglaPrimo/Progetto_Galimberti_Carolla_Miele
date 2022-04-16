@@ -13,7 +13,7 @@ if (isset($_POST["Conferma_Password"])) $Conferma_Password = $_POST["Conferma_Pa
 if (isset($_POST["Nome"])) $Nome = $_POST["Nome"]; else $Nome = "";
 if (isset($_POST["Cognome"])) $Cognome = $_POST["Cognome"]; else $Cognome = "";
 if (isset($_POST["Numero_telefono"])) $Numero_telefono = $_POST["Numero_telefono"]; else $Numero_telefono = "";
-if (isset($_POST["Città"])) $Città = $_POST["Città"]; else $Città = "";
+if (isset($_POST["citta"])) $citta = $_POST["citta"]; else $citta = "";
 if (isset($_POST["Via"])) $Via = $_POST["Via"]; else $Via = "";
 if (isset($_POST["Civico"])) $Civico = $_POST["Civico"]; else $Civico = "";
 if (isset($_POST["tipologia"])) $tipologia = $_POST["tipologia"]; else $tipologia = "";
@@ -95,8 +95,8 @@ if ($tipologia == "cliente") {
                     <td class="Login"><input class="caselle" type="text" name="Numero_telefono" <?php echo "value = '$Numero_telefono'" ?>></td>
                 </tr>
                 <tr>
-                    <td class="Login">Città:</td>
-                    <td class="Login"><input class="caselle" type="text" name="Città" <?php echo "value = '$Città'" ?>></td>
+                    <td class="Login">citta:</td>
+                    <td class="Login"><input class="caselle" type="text" name="citta" <?php echo "value = '$citta'" ?>></td>
                 </tr>
                 <tr>
                     <td class="Login">Via:</td>
@@ -148,12 +148,12 @@ if ($tipologia == "cliente") {
                         $_SESSION["Nome"]=$Nome;
                         $_SESSION["Cognome"]=$Cognome;
                         $_SESSION["Numero_telefono"]=$Numero_telefono;
-                        $_SESSION["Città"]=$Città;
+                        $_SESSION["citta"]=$citta;
                         $_SESSION["Via"]=$Civico;
                         $_SESSION["Civico"]=$Civico;
                         
-                        $myquery = "INSERT INTO $tipologia (E_mail, Password, Nome, Cognome, Numero_telefono, Città, Via, Civico)
-                                    VALUES ('$E_mail', '$Password', '$Nome', '$Cognome','$Numero_telefono','$Città','$Via','$Civico')";
+                        $myquery = "INSERT INTO $tipologia (E_mail, Password, Nome, Cognome, Numero_telefono, citta, Via, Civico)
+                                    VALUES ('$E_mail', '$Password', '$Nome', '$Cognome','$Numero_telefono','$citta','$Via','$Civico')";
 
                         /*
                         // Versione con l'uso dell'hash

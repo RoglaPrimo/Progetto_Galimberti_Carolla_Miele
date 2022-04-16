@@ -107,7 +107,7 @@
 
     <form action="vendite.php" method="post">
                <?php
-                $sql2 =" SELECT magazzino.Codice_magazzino, magazzino.Città AS Città, magazzino.Via AS Via, magazzino.Civico AS Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza AS Capienza
+                $sql2 =" SELECT magazzino.Codice_magazzino, magazzino.citta AS citta, magazzino.Via AS Via, magazzino.Civico AS Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza AS Capienza
                             FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
                             GROUP BY magazzino.Codice_magazzino
                             HAVING Numero_barattoli < Capienza";
@@ -116,11 +116,11 @@
                 
                  foreach($ris2 as $riga) {
                     $Codice_magazzino = $riga["Codice_magazzino"];
-                    $Città = $riga["Città"];
+                    $citta = $riga["citta"];
                     $Via = $riga["Via"];
                     $Civico = $riga["Civico"];
                     $_SESSION["Codice_magazzino"]=$Codice_magazzino;
-                    $_SESSION["Città"]=$Città;
+                    $_SESSION["citta"]=$citta;
                     $_SESSION["Via"]=$Via;
                     $_SESSION["Civico"]=$Civico;
 
@@ -128,7 +128,7 @@
                         <tr>
                             <td><input type='radio' name='Codice_magazzino' value='$Codice_magazzino'/></td>
                             <td>$Codice_magazzino</td>
-                            <td>$Città</td>
+                            <td>$citta</td>
                             <td>$Via</td>
                             <td>$Civico</td>
                         </tr>
@@ -143,7 +143,7 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $Codice_magazzino=$_SESSION["Codice_magazzino"];
-            // $Città=$_SESSION["Città"];
+            // $citta=$_SESSION["citta"];
             // $Via=$_SESSION["Via"];
             // $Civico=$_SESSION["Civico"];
             $Prezzo= $_SESSION["Prezzo"];

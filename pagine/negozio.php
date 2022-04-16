@@ -11,6 +11,7 @@
     if(isset($_POST["Girasole"])) $Girasole = $_POST["Girasole"];  else $Girasole = "";
     if(isset($_POST["Erba_medica"])) $Erba_medica = $_POST["Erba_medica"];  else $Erba_medica = "";
     if(isset($_POST["Eucalipto"])) $Eucalipto = $_POST["Eucalipto"];  else $Eucalipto = "";
+    if(isset($_POST["Capienza"])) $Capienza = $_POST["Capienza"];  else $Capienza = "";
 
     $db_servername = "localhost";
     $db_name = "miele";
@@ -25,6 +26,7 @@
 	}
 
     $E_mail = $_SESSION["E_mail"];
+    $Codice_cliente= $_SESSION["Codice_cliente"];
 	//echo $username;
 
 	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
@@ -35,11 +37,11 @@
 			$bellissimo = array();
 		}
 		// $libri = isset($_POST['cod_libri']) ? $_POST['cod_libri'] : array(); // è un if else
-		foreach($bellissimo as $Codice_barattolo) {
+		foreach($bellissimo as $Caruccio) {
   			//echo $libro . '<br/>';
   			$sql = "UPDATE barattolo
   					SET Codice_cliente = '$Codice_cliente'
-  					WHERE Codice_barattolo = '$Codice_barattolo'";
+  					WHERE Codice_barattolo = '$Caruccio'";
 			$conn->query($sql) or die("<p>Query fallita!</p>");
 		}
     }
@@ -145,7 +147,8 @@
                     $sql = $sql."'$miele', ";
                 }
                 
-                $sql = $sql.") AND barattolo.Capienza= " .$_POST["Capienza"]. " AND barattolo.Codice_cliente= NULL ";
+                $sql = $sql.") AND barattolo.Capienza= " .$Capienza. " AND barattolo.Codice_cliente= NULL ";
+                // individuato l'errore: non gli va bene quel Null che viene dato, non gli piace per nulla
 
         $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
 
@@ -173,7 +176,7 @@
                 
                 echo "
                     <tr>
-                        <td><input type='checkbox' name='Codice_barattolo[]' value='$bellissimo'/></td>
+                        <td><input type='checkbox' name='Codice_barattolo[]' value='$Codice_barattolo'/></td>
                         <td>$Codice_barattolo</td>
                         <td>$MieleNome</td>
                         <td>$Capienza</td>
@@ -189,6 +192,7 @@
     <p><input type="submit" value="Aggiungi al carrello"></p>
     </form>
     </div>
+    <!-- manca tutta la aprte di aggiunta del cliente  -->
     <?php 
 		include('footer.php');
 	    $conn->close();
