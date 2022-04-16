@@ -1,14 +1,10 @@
 <?php
 session_start();
 
-if (isset($_SESSION["E_mail"])) $E_mail = $_SESSION["E_mail"];
-else $E_mail = "";
-if (isset($_SESSION["Numero_telefono"])) $Numero_telefono = $_SESSION["Numero_telefono"];
-else $Numero_telefono = "";
-if (isset($_SESSION["Password"])) $Password = $_SESSION["Password"];
-else $Password = "";
-if (isset($_SESSION["Codice_Cliente"])) $Codice_Cliente = $_SESSION["Codice_Cliente"];
-else $Codice_Cliente = "";
+if (isset($_SESSION["E_mail"])) $E_mail = $_SESSION["E_mail"]; else $E_mail = "";
+if (isset($_SESSION["Numero_telefono"])) $Numero_telefono = $_SESSION["Numero_telefono"]; else $Numero_telefono = "";
+if (isset($_SESSION["Password"])) $Password = $_SESSION["Password"]; else $Password = "";
+if (isset($_SESSION["Codice_cliente"])) $Codice_cliente = $_SESSION["Codice_cliente"]; else $Codice_cliente = "";
 
 $db_servername = "localhost";
 $db_name = "miele";
@@ -45,17 +41,44 @@ if ($_SESSION["tipologia"] != "cliente") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il tuo carrello</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+    crossorigin="anonymous" />
+
     <link rel="stylesheet" href="../style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.1/flickity.min.css"
+    integrity="sha512-ztsAq/T5Mif7onFaDEa5wsi2yyDn5ygdVwSSQ4iok5BPJQGYz1CoXWZSA7OgwGWrxrSrbF0K85PD5uLpimu4eQ=="
+    crossorigin="anonymous" />
+
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+    <style> @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="header">
+        <ul class="header__menu">
+            <li><a id="black" href="miele.php">I nostri prodotti</a></li>
+            <li><a id="black" href="negozio.php">Negozio</a></li>
+            <li class="header__img">
+                <a href="home_cliente.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
+            </li>
+            <li><a id="active" href="ordini.php">Il tuo carrello</a></li>
+            <li><a id="black" href="logout.php">Logout</a> </li>
+        </ul>
+    </div>
+
+    <div class="container__Intro__text reveal" id="backwhite">
     <h1>Ecco qui il suo carrello:</h1>
     <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
         <?php
-        $Codice_Cliente = $_SESSION["Codice_cliente"];
+        $Codice_cliente = $_SESSION["Codice_cliente"];
         $sql = "  SELECT barattolo.Codice_barattolo, barattolo.Codice_apicoltore, barattolo.Prezzo, barattolo.Nome_miele, Barattolo.Capienza
                 FROM barattolo
-                WHERE barattolo.Codice_cliente= $Codice_cliente ";
+                WHERE barattolo.Codice_cliente= '$Codice_cliente' ";
         $ris = $conn->query($sql) or die("<p> query Fallita</p>");
 
         if ($ris->num_rows > 0) {
@@ -88,7 +111,7 @@ if ($_SESSION["tipologia"] != "cliente") {
         ?>
     </form>
     <p style="text-align: center; padding-top: 10px"><input type="submit" value="Conferma" /></p>
-
+    </div>
 
 
 

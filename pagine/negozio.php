@@ -13,6 +13,8 @@
     if(isset($_POST["Eucalipto"])) $Eucalipto = $_POST["Eucalipto"];  else $Eucalipto = "";
     if(isset($_POST["Capienza"])) $Capienza = $_POST["Capienza"];  else $Capienza = "";
 
+    if(isset($_SESSION["Codice_cliente"])) $Codice_cliente = $_SESSION["Codice_cliente"];  else $Codice_cliente = "";
+
     $db_servername = "localhost";
     $db_name = "miele";
     $db_username = "root";
@@ -25,8 +27,8 @@
 	    header('location: logout.php');
 	}
 
-    $E_mail = $_SESSION["E_mail"];
-    $Codice_cliente= $_SESSION["Codice_cliente"];
+    // $E_mail = $_SESSION["E_mail"];
+    // $Codice_cliente= $_SESSION["Codice_cliente"];
 	//echo $username;
 
 	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
@@ -54,24 +56,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Negozio</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+    crossorigin="anonymous" />
+
     <link rel="stylesheet" href="../style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.1/flickity.min.css"
+    integrity="sha512-ztsAq/T5Mif7onFaDEa5wsi2yyDn5ygdVwSSQ4iok5BPJQGYz1CoXWZSA7OgwGWrxrSrbF0K85PD5uLpimu4eQ=="
+    crossorigin="anonymous" />
+
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+    <style> @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-<div class="menu">
-        <ul>
-            <li><a href="informazioni.php">Chi siamo</a></li>
-            <li><a href="miele.php">I nostri prodotti</a></li>
+    <div class="header">
+        <ul class="header__menu">
+            <li><a id="black" href="miele.php">I nostri prodotti</a></li>
+            <li><a id="active" href="negozio.php">Negozio</a></li>
+            <li class="header__img">
+                <a href="home_cliente.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
+            </li>
+            <li><a id="black" href="ordini.php">Il tuo carrello</a></li>
+            <li><a id="black" href="logout.php">Logout</a> </li>
         </ul>
-        <ul>
-            <li><a href="">Negozio</a></li>
-            <li><a href="ordini.php">Il tuo carrello</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
-
     </div>
 
-    <div>
+    <div class="container__Intro__text reveal" id="backwhite">
     <h1>SCEGLI IL MIELE CHE TI INTERESSA E LA CAPIENZA DEL BARATTOLO</h1>
     <p>Ecco tutti i nostri mieli:</p>
 
@@ -80,7 +96,7 @@
         <table>
             <tr>
                 <td>
-                    <input type="checkbox" name="Acacia" value="Acacia"> Miele d'acacia
+                    <input type="checkbox" name="Acacia" value="Acacia" checked> Miele d'acacia
                     <input type="checkbox" name="Castagno" value="Castagno"> Miele di castagno
                 </td>
             </tr>
@@ -191,7 +207,15 @@
     ?>
     <p><input type="submit" value="Aggiungi al carrello"></p>
     </form>
+
+    <!-- </div>
+        <video autoplay muted loop id="video-back">
+            <source src="../immagini/Api, l'impollinazione - bees pollination Macro 1080p 60 fps Nikon 1 J2.mp4" type="video/mp4">
+        </video>
+    </div> -->
+
     </div>
+  
     <!-- manca tutta la aprte di aggiunta del cliente  -->
     <?php 
 		include('footer.php');

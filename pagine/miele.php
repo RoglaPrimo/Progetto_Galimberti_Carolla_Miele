@@ -130,7 +130,7 @@ $db_password = "";
                 In particolar modo, è il Piemonte la regione in cui viene prodotto maggiormente questo tipo di miele.
 
                 I mieli di tiglio che risultano maggiormente puri sono quelli che arrivano direttamente dall'Ossola o dalle vallate intorno a Novara.</p>
-            <p> tiglio si caratterizza per donare un nettare intriso di un aroma del tutto particolare, che risalta all'interno dei mieli anche quando la percentuale di tiglio è davvero piuttosto bassa.
+            <p class="reveal2"> Il tiglio si caratterizza per donare un nettare intriso di un aroma del tutto particolare, che risalta all'interno dei mieli anche quando la percentuale di tiglio è davvero piuttosto bassa.
 
 In special modo, il miele di tiglio ha anche delle particolari proprietà che lo rendono spesso impiegabile per diversi scopi terapeutici.
 
@@ -152,7 +152,7 @@ s
             <p class="reveal2">Il miele di tarassaco presenta il tipico colore giallo vivo. Solo se mischiato al miele di salice, per esempio, assume una colorazione più tendente al beige. Ha una cristallizzazione particolarmente veloce e molto spesso si verifica con cristalli piuttosto fini. Questo non rende molto consigliabile una sua prolungata permanenza nei maturatori, da cui poi potrebbe risultare complicato l’invasettamento. Inoltre, presenta un contenuto di acqua piuttosto elevato, attorno al 18-20%. Se non corretto dall’apicoltore, questo può ridurre notevolmente i tempi di conservazione del miele stesso a causa di una probabile fermentazione.
 
 Una particolarità che permette di riconoscere immediatamente questo miele è il suo odore molto forte, pungente, penetrante, molto spesso descritto come ammoniacale. A ciò, tuttavia, corrisponde un sapore che ricorda l’infuso di camomilla o, addirittura, il gusto delle caramelle a base di oli essenziali.</p>
-            <p>Le proprietà peculiari di questo miele sono sicuramente quelle diuretiche, depurative e drenanti. È per questo che molto spesso viene inserito all’interno di diete purificanti o utilizzato per cure che mirano all’eliminazione delle tossine dal nostro organismo. Buon depurativo per tutto il nostro corpo, viene indicato particolarmente per la depurazione dei reni. Importante, così come per tutte le tipologie di miele, è consumarlo grezzo, non sottoposto a lavorazioni che lo privano delle sue preziose qualità. È quindi preferibile scegliere un miele prodotto localmente, magari dall’apicoltore vicino a casa, in modo tale da essere sicuri della sua genuinità e origine. </p>
+            <p class="reveal2">Le proprietà peculiari di questo miele sono sicuramente quelle diuretiche, depurative e drenanti. È per questo che molto spesso viene inserito all’interno di diete purificanti o utilizzato per cure che mirano all’eliminazione delle tossine dal nostro organismo. Buon depurativo per tutto il nostro corpo, viene indicato particolarmente per la depurazione dei reni. Importante, così come per tutte le tipologie di miele, è consumarlo grezzo, non sottoposto a lavorazioni che lo privano delle sue preziose qualità. È quindi preferibile scegliere un miele prodotto localmente, magari dall’apicoltore vicino a casa, in modo tale da essere sicuri della sua genuinità e origine. </p>
         </div>
     </div>
 

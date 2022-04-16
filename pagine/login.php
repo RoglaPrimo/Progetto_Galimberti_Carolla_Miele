@@ -123,6 +123,16 @@ $db_password = "";
                         $conn->close();
                         header("location: home_apicoltore.php");
                     } else {
+                            $sql= "SELECT cliente.Codice_cliente AS codice
+                                FROM cliente
+                                WHERE cliente.E_mail= '$E_mail' AND cliente.Password='$Password'";
+        
+                            $ris = $conn->query($sql) or die("<p>Query fallita! " . $conn->error . "</p>");
+
+                            $row = $ris->fetch_assoc();
+                            $_SESSION["Codice_utente"]= $row["codice"];
+
+                        $conn->close();
                         header("location: home_cliente.php");
                     }
                 }
