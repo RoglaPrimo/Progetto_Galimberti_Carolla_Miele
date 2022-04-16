@@ -345,6 +345,20 @@ body {
     margin: 30px 50px;
 }
 
+.Tiglio
+{
+    border: 15px solid rgba(157, 165, 42, 0.521);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
+.Tarassaco
+{
+    border: 15px solid rgba(194, 130, 0, 0.521);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
 
 
 /* footer */
