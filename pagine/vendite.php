@@ -4,7 +4,7 @@
     if(isset($_POST["Capienza"])) $Capienza = $_POST["Capienza"];  else $Capienza = "";
     if(isset($_SESSION["Numero_telefono"])) $Numero_telefono = $_SESSION["Numero_telefono"];  else $Numero_telefono = "";
     if(isset($_POST["Codice_magazzino"])) $Codice_magazzino = $_POST["Codice_magazzino"];  else $Codice_magazzino = "";
-    if(isset($_POST["Codice_apicoltore"])) $Codice_apicoltore = $_POST["Codice_apicoltore"];  else $Codice_apicoltore = "";
+    if(isset($_SESSION["Codice_utente"])) $Codice_apicoltore = $_SESSION["Codice_utente"];  else $Codice_apicoltore = "";
     if(isset($_POST["Miele"])) $Miele = $_POST["Miele"];  else $Miele = "";
     if(isset($_POST["Data_confezionamento"])) $Data_confezionamento = $_POST["Data_confezionamento"];  else $Data_confezionamento = "";
     // if(isset($_POST["Prezzo"])) $Prezzo = $_POST["Prezzo"];  else $Prezzo = "";
@@ -107,7 +107,7 @@
 
     <form action="vendite.php" method="post">
                <?php
-                $sql2 =" SELECT magazzino.Codice_magazzino, magazzino.citta AS citta, magazzino.Via AS Via, magazzino.Civico AS Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza AS Capienza
+                $sql2 =" SELECT magazzino.Codice_magazzino, magazzino.Citta,  magazzino.Via, magazzino.Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza
                             FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
                             GROUP BY magazzino.Codice_magazzino
                             HAVING Numero_barattoli < Capienza";
@@ -116,11 +116,11 @@
                 
                  foreach($ris2 as $riga) {
                     $Codice_magazzino = $riga["Codice_magazzino"];
-                    $citta = $riga["citta"];
+                    $Citta = $riga["Citta"];
                     $Via = $riga["Via"];
                     $Civico = $riga["Civico"];
                     $_SESSION["Codice_magazzino"]=$Codice_magazzino;
-                    $_SESSION["citta"]=$citta;
+                    $_SESSION["Citta"]=$Citta;
                     $_SESSION["Via"]=$Via;
                     $_SESSION["Civico"]=$Civico;
 
@@ -128,7 +128,7 @@
                         <tr>
                             <td><input type='radio' name='Codice_magazzino' value='$Codice_magazzino'/></td>
                             <td>$Codice_magazzino</td>
-                            <td>$citta</td>
+                            <td>$Citta</td>
                             <td>$Via</td>
                             <td>$Civico</td>
                         </tr>
@@ -143,7 +143,7 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $Codice_magazzino=$_SESSION["Codice_magazzino"];
-            // $citta=$_SESSION["citta"];
+            // $Citta=$_SESSION["Citta"];
             // $Via=$_SESSION["Via"];
             // $Civico=$_SESSION["Civico"];
             $Prezzo= $_SESSION["Prezzo"];
@@ -152,9 +152,8 @@
             //             FROM apicoltore
             //             WHERE apicoltore.Numero_telefono ='$Numero_telefono'";
 
-            // $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->error;
-
-            $Codice_apicoltore=$_SESSION["Codice_utente"];
+            // $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->errore
+            $Codice_apicoltore= $_SESSION["Codice_utente"];
             $Data_immagazzinamento=date("d/m/y");
         }
             
