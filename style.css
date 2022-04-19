@@ -134,7 +134,28 @@ body {
     height: auto;
 }
 
+#backwhite2
+{
+    background-color: rgba(250, 159, 40, 0.904);
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 60px;
+    margin-bottom: 40px;
+    /* padding-top: 20px; */
+    padding:50px;
+    height: auto;
+}
+
 .tab_dati_personali{
+	/* width: 500px; */
+	text-align: left;
+	margin: auto;
+    /* font-weight: bold; */
+    font-size: 23px;
+    font-family: 'Lobster',cursive;
+}
+.tab_dati_personali2{
 	/* width: 500px; */
 	text-align: left;
 	margin: auto;
@@ -359,7 +380,16 @@ body {
     border-radius: 15px;
     margin: 30px 50px;
 }
-
+.container__Intro__text2 {
+    width: 70%;
+    align-content: center;
+    z-index: 10;
+    margin-top: 180px;
+    /* background-color: white; */
+    margin-left: 15%;
+    margin-right: 15%;
+    color: white;
+}
 
 
 /* footer */
@@ -375,7 +405,9 @@ body {
     z-index: 5;
     justify-content: center;
 }
-
+.footer_scuro .footer{
+    color:#000;
+}
 .footer--dark
 {
     color: black;

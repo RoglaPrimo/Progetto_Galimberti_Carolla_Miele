@@ -48,8 +48,8 @@ if ($_SESSION["tipologia"] != "apicoltore") {
     <div class="header">
         <ul class="header__menu">
             <!-- <li><a id="colore" href="index.php">Chi siamo</a></li> -->
-            <li><a id="colore" href="miele.php">I nostri prodotti</a></li>
-            <li><a id="colore" href="magazzino.php">Magazzino</a></li>
+            <li><a  href="miele.php">I nostri prodotti</a></li>
+            <li><a  id="active" href="magazzino.php " >Magazzino</a></li>
             <li class="header__img">
                 <a href=""><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
             </li>
@@ -59,7 +59,7 @@ if ($_SESSION["tipologia"] != "apicoltore") {
     </div>
 
     <div class="container__Intro">
-        <div class="container__Intro__text reveal" id="backwhite">
+        <div class="container__Intro__text reveal" id="backwhite2">
             <h1>LA NOSTRA COLLABORAZIONE</h1>
 
             <?php
@@ -101,24 +101,25 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
                 if ($ris2->num_rows == 0) {
                     echo "
-                <table class='tab_dati_personali'>
-                    <tr> <th class='paddingaggiuntivo'>Codice del magazzino</th> <th >Comune</th></tr>
+                <table class='tab_dati_personali2'>
+                    <tr> <th style='color: black;' class='paddingaggiuntivo'>Codice del magazzino</th> <th style='color: black;' >Comune</th></tr>
                     <tr>
-                            <td class='Login'  id='#textalign'>$Codice_magazzino</td>
-                            <td  class='Login' id='#textalign'>$Citta</td>
+                            <td class='Login paddingaggiuntivo'  style='text-align:center'>$Codice_magazzino</td>
+                            <td  class='Login paddingaggiuntivo' style='text-align:center'>$Citta</td>
                     </tr>
-                    <tr><td colspan='2'><p>Nessuno dei tuoi barattoli è ancora all'interno del magazzino</p></td></tr>
+                    <tr><td colspan='2'><p>Nessuno dei tuoi barattoli è ancora <br>
+                    all'interno del magazzino</p></td></tr>
                 ";
                 } else {
                     echo "
-                <table class='tab_dati_personali paddingaggiuntivo'>
-                    <tr> <th></th> <th>Codice del magazzino</th> <th>Comune</th></tr>
+                <table class='tab_dati_personali2 paddingaggiuntivo'>
+                    <tr>  <th style='color: black;' class='paddingaggiuntivo'>Codice del magazzino</th> <th style='color: black;' class='paddingaggiuntivo'>Comune</th></tr>
                     <tr>
-                            <td>$Codice_magazzino</td>
-                            <td>$Citta</td>
+                            <td style='text-align:center'>$Codice_magazzino</td>
+                            <td style='text-align:center'>$Citta</td>
                     </tr>
                 ";
-                    echo "<tr> <th></th> <th>Codice del barattolo</th> <th>Capienza del barattolo</th> <th>Tipo di miele</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th></tr>";
+                    echo "<tr>  <th  style='color: black;' class='paddingaggiuntivo'>Codice del barattolo</th> <th  style='color: black;' class='paddingaggiuntivo'>Capienza del barattolo</th> <th  style='color: black;' class='paddingaggiuntivo'>Tipo di miele</th> <th  style='color: black;' class='paddingaggiuntivo'>Data di confezionamento</th> <th  style='color: black;' class='paddingaggiuntivo'>Data di immagazzinamento</th></tr>";
 
                     while ($pippo = $ris2->fetch_assoc()) {
                         $Codice_barattolo = $pippo["Codice_barattolo"];
@@ -129,11 +130,11 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
                         echo "
                         <tr>
-                            <td>$Codice_barattolo</td>
-                            <td>$Capienza</td>
-                            <td>$Nome_miele</td>
-                            <td>$Data_confezionamento</td>
-                            <td>$Data_immagazinamento</td>
+                            <td style='text-align:center'>$Codice_barattolo</td>
+                            <td style='text-align:center'>$Capienza</td>
+                            <td style='text-align:center'>$Nome_miele</td>
+                            <td style='text-align:center'>$Data_confezionamento</td>
+                            <td style='text-align:center'>$Data_immagazinamento</td>
                         </tr>
                     ";
                     };

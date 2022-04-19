@@ -1,10 +1,10 @@
 <?php 
     echo '<div class="footer ';
     // echo $_SERVER["PHP_SELF"];
-    if(basename($_SERVER["PHP_SELF"])=="miele.php")
-    {
-        echo 'footer--dark';
-    }
+    // if(basename($_SERVER["PHP_SELF"])=="miele.php")
+    // {
+    //     echo 'footer--dark';
+    // }
     echo '">';
     echo '<em>"Negozio online di miele"</em>, società di apicoltura Galimberti-Carolla di Vimercate';
     echo '<div class="Mattavelli">

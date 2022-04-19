@@ -34,7 +34,7 @@ $db_password = "";
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="footer_scuro">
     <div class="header">
         <?php
         if ($tipologia == "cliente") {
