@@ -6,19 +6,15 @@ if (isset($_POST["Castagno"]))  array_push($mieli, $_POST["Castagno"]);
 if (isset($_POST["Tiglio"])) array_push($mieli, $_POST["Tiglio"]);
 if (isset($_POST["Tarassaco"])) array_push($mieli, $_POST["Tarassaco"]);
 if (isset($_POST["Rododendro"])) array_push($mieli, $_POST["Rododendro"]);
-if (isset($_POST["Millefiori"])) array_push($mieli,$_POST["Millefiori"]);
-if (isset($_POST["Timo"])) array_push($mieli,$_POST["Timo"]);
+if (isset($_POST["Millefiori"])) array_push($mieli, $_POST["Millefiori"]);
+if (isset($_POST["Timo"])) array_push($mieli, $_POST["Timo"]);
 if (isset($_POST["Girasole"])) array_push($mieli, $_POST["Girasole"]);
-if (isset($_POST["Erba_medica"])) array_push($mieli,$_POST["Erba_medica"]);
+if (isset($_POST["Erba_medica"])) array_push($mieli, $_POST["Erba_medica"]);
 if (isset($_POST["Eucalipto"])) array_push($mieli, $_POST["Eucalipto"]);
 if (isset($_POST["Capienza"])) $Capienza = $_POST["Capienza"];
-else $Capienza = 0;
-
-
-
-
-
-if (isset($_SESSION["Codice_cliente"])) $Codice_cliente = $_SESSION["Codice_cliente"];
+else $Capienza = "NULL";
+if ($Capienza == "") $Capienza = "NULL";
+if (isset($_SESSION["Codice_utente"])) $Codice_cliente = $_SESSION["Codice_utente"];
 else $Codice_cliente = "";
 
 $db_servername = "localhost";
@@ -50,7 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "UPDATE barattolo
   					SET Codice_cliente = '$Codice_cliente'
   					WHERE Codice_barattolo = '$Caruccio'";
-        $conn->query($sql) or die("<p>Query fallita!</p>");
+        $conn->query('SET FOREIGN_KEY_CHECKS=0;');
+        $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
+        $conn->query('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
 ?>
@@ -95,99 +93,93 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container__Intro__text reveal" id="backwhite">
         <h1>SCEGLI IL MIELE CHE TI INTERESSA E LA CAPIENZA DEL BARATTOLO</h1>
-        <p>Ecco tutti i nostri mieli:</p>
 
         <form action="negozio.php" method="post">
 
-            <table>
+            <table class="tabella_input_2_colonne">
+                <h2 style="font-size:xx-large;">Ecco tutti i nostri mieli:</h2>
                 <tr>
-                    <td>
-                        <input type="checkbox" name="Acacia" value="Acacia" checked> Miele d'acacia
-                        <input type="checkbox" name="Castagno" value="Castagno"> Miele di castagno
-                    </td>
+
+                    <td> <input type="checkbox" name="Acacia" value="Acacia"> Miele d'acacia </td>
+                    <td> <input type="checkbox" name="Castagno" value="Castagno"> Miele di castagno </td>
+
                 </tr>
                 <tr>
                     <td>
                         <input type="checkbox" name="Tiglio" value="Tiglio"> Miele di tiglio
-                        <input type="checkbox" name="Tarassaco" value="Tarassaco"> Miele di tarassaco
+                    </td>
+                    <td> <input type="checkbox" name="Tarassaco" value="Tarassaco"> Miele di tarassaco
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="checkbox" name="Rododendro" value="Rododendro"> Miele di rododendro
-                        <input type="checkbox" name="Millefiori" value="Millefiori"> Miele millefiori
+                    </td>
+                    <td> <input type="checkbox" name="Millefiori" value="Millefiori"> Miele millefiori
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="checkbox" name="Timo" value="Timo"> Miele di timo
-                        <input type="checkbox" name="Girasole" value="Girasole"> Miele di girasole
+                    </td>
+                    <td> <input type="checkbox" name="Girasole" value="Girasole"> Miele di girasole
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="checkbox" name="Erba_medica" value="Erba_medica"> Miele di erba medica
-                        <input type="checkbox" name="Eucalipto" value="Eucalipto"> Miele d'eucalipto
+                    </td>
+                    <td> <input type="checkbox" name="Eucalipto" value="Eucalipto"> Miele d'eucalipto
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Capienza: <input type="int" name="Capienza" value="">
+                    <td colspan="2" class="centrato">
+                        Capienza: <input class="caselle" type="number" name="Capienza" value="">
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="submit" value="Filtra" />
+                    <td colspan="2" class="centrato">
+                        <input class="caselle" type="submit" value="Filtra">
                     </td>
                 </tr>
             </table>
         </form>
-
-        <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
-            <?php
-
-
-
-
-            $pippy = "";
-            $sql = "SELECT barattolo.Codice_barattolo, miele.Nome, barattolo.Capienza, barattolo.Data_confezionamento, barattolo.Data_immagazzinamento, apicoltore.Nome, magazzino.Codice_magazzino, barattolo.Prezzo
+    <?php
+    if(count($mieli)>0){
+        echo '<form method="post" action="' . $_SERVER["PHP_SELF"] . '">';
+        $pippy = "";
+        $sql = "SELECT barattolo.Codice_barattolo, miele.Nome, barattolo.Capienza, barattolo.Data_confezionamento, barattolo.Data_immagazzinamento, apicoltore.Cognome  , magazzino.Codice_magazzino, barattolo.Prezzo
                 FROM barattolo JOIN miele ON barattolo.Nome_miele=miele.Nome
                             JOIN apicoltore ON apicoltore.Codice_apicoltore=barattolo.Codice_apicoltore
                             JOIN magazzino ON magazzino.Codice_magazzino=barattolo.Codice_magazzino
                 WHERE barattolo.Nome_miele IN (";
-            for($i=0; $i<count($mieli); $i++){
-                $pippy= $pippy. "\"" . $mieli[$i] . "\"" ;
-                if ( $i<count($mieli)-1){
-                    $pippy= $pippy. "," ;
-                }
-
+        for ($i = 0; $i < count($mieli); $i++) {
+            $pippy = $pippy . "\"" . $mieli[$i] . "\"";
+            if ($i < count($mieli) - 1) {
+                $pippy = $pippy . ",";
             }
-            $sql = $sql . $pippy .   ") AND barattolo.Capienza= " . $Capienza . " AND barattolo.Codice_cliente IS NULL ";
+        }
+        if ($Capienza == "NULL")  $sql = $sql . $pippy .   ") AND barattolo.Codice_cliente IS NULL ";
+        else $sql = $sql . $pippy .   ") AND barattolo.Capienza= " . $Capienza . " AND barattolo.Codice_cliente IS NULL ";
+        // echo "<p>" . $_POST["Capienza"] . "</p>";
+        // echo "<p>$Capienza</p>";
+        // echo "<p>$sql</p>";
+        $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
 
-            $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
+        if ($ris->num_rows > 0) {
+            echo "<p>Scegli tra i barattoli trovati secondo le tue preferenze.</p>";
+            echo "<table>";
+            echo "<tr> <th></th> <th>Codice del barattolo</th> <th>Tipo di miele</th> <th>Capienza del barattolo</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th> <th>Apicoltore</th> <th>Codice magazzino</th> <th>Prezzo del barattolo</th></tr>";
 
-            if ($ris->num_rows > 0) {
-                echo "<p>Scegli tra i barattoli trovati secondo le tue preferenze.</p>";
-                echo "<table>";
-                echo "<tr> <th></th> <th>Codice del barattolo</th> <th>Tipo di miele</th> <th>Capienza del barattolo</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th> <th>Apicoltore</th> <th>Codice magazzino</th> <th>Prezzo del barattolo</th></tr>";
-
-                foreach ($ris as $riga) {
-                    // if ($riga["E_mail"]){
-                    //     $preso = "disabled";
-                    //     $disponibile = "No";
-                    // }
-                    // else {
-                    //     $preso = "";
-                    //     $disponibile = "Sì"; 
-                    // }
-                    $Codice_barattolo = $riga["Codice_barattolo"];
-                    $MieleNome = $riga["Nome"];
-                    $Capienza = $riga["Capienza"];
-                    $Data_confezionamento = $riga["Data_confezionamento"];
-                    $Data_immagazzinamento = $riga["Data_immagazzinamento"];
-                    $ApicoltoreNome = $riga["Nome"];
-                    $Codice_magazzino = $riga["Codice_magazzino"];
-                    echo "
+            foreach ($ris as $riga) {
+                $Codice_barattolo = $riga["Codice_barattolo"];
+                $MieleNome = $riga["Nome"];
+                $Capienza = $riga["Capienza"];
+                $Data_confezionamento = $riga["Data_confezionamento"];
+                $Data_immagazzinamento = $riga["Data_immagazzinamento"];
+                $ApicoltoreCognome = $riga["Cognome"];
+                $Codice_magazzino = $riga["Codice_magazzino"];
+                echo "
                     <tr>
                         <td><input type='checkbox' name='Codice_barattolo[]' value='$Codice_barattolo'/></td>
                         <td>$Codice_barattolo</td>
@@ -195,16 +187,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <td>$Capienza</td>
                         <td>$Data_confezionamento</td>
                         <td>$Data_immagazzinamento</td>
-                        <td>$ApicoltoreNome</td>
+                        <td>$ApicoltoreCognome</td>
                         <td>$Codice_magazzino</td>
                     </tr>";
-                }
-                echo "</table>";
             }
-            ?>
-            <p><input type="submit" value="Aggiungi al carrello"></p>
-        </form>
+            echo "</table>";
+        }
 
+        echo '<p><input type="submit" value="Aggiungi al carrello"></p>';
+        echo '</form>';
+    }
+    ?>
         <!-- </div>
         <video autoplay muted loop id="video-back">
             <source src="../immagini/Api, l'impollinazione - bees pollination Macro 1080p 60 fps Nikon 1 J2.mp4" type="video/mp4">

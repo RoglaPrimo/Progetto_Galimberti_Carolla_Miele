@@ -248,7 +248,7 @@ body {
     border-radius: 5px;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 #accedi
@@ -478,4 +478,30 @@ body {
 }
 .paddingaggiuntivo{
     padding:7px;
+
+}
+
+.tabella_input_2_colonne{
+    text-align: left;
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top: 30px;
+    margin-bottom:30px;
+    font-family: 'Lobster',cursive;
+    font-size:23px;
+}
+.tabella_input_2_colonne td{
+    padding:7px;
+    padding-left: 30px;
+}
+.centrato{
+    text-align: center;
+}
+.tabella_input_2_colonne .centrato{
+    padding:7px;
+}
+
+#cursive{
+    font-family: 'Lobster',cursive;
 }

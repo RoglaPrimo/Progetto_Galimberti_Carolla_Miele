@@ -41,50 +41,61 @@ if ($_SESSION["tipologia"] != "apicoltore") {
     <title>Le tue vendite</title>
     <link rel="stylesheet" href="../style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.1/flickity.min.css" integrity="sha512-ztsAq/T5Mif7onFaDEa5wsi2yyDn5ygdVwSSQ4iok5BPJQGYz1CoXWZSA7OgwGWrxrSrbF0K85PD5uLpimu4eQ==" crossorigin="anonymous" />
+
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
-    <div class="menu">
-        <ul>
-            <li><a href="informazioni.php">Chi siamo</a></li>
-            <li><a href="miele.php">I nostri prodotti</a></li>
-        </ul>
-        <ul>
-            <li><a href="magazzino.php">Magazzino</a></li>
-            <li><a href="">Le tue vendite</a></li>
-            <li><a href="logout.php">Logout</a></li>
+<body class="footer_scuro">
+    <div class="header">
+        <ul class="header__menu">
+            <li><a id="black" href="miele.php">I nostri prodotti</a></li>
+            <li><a id="black" href="magazzino.php">Magazzino</a></li>
+            <li class="header__img">
+                <a href="home_cliente.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
+            </li>
+            <li><a id="active" href="vendite.php">Le tue vendite</a></li>
+            <li><a id="black" href="logout.php">Logout</a> </li>
         </ul>
     </div>
 
-    <h1>INSERISCI LE INFORMAZIONI DEL BARATTOLO CHE VUOI VENDERE:</h1>
-    <div>
+
+    <div class="container__Intro__text reveal" id="backwhite2" style="background-color:palegreen; color:black;">
+        <h1>INSERISCI LE INFORMAZIONI DEL BARATTOLO CHE VUOI VENDERE:</h1>
         <form action="vendite.php" method="post">
-            <table>
+            <table class="tabella_input_2_colonne">
                 <tr>
                     <td colspan="2">Tipo di miele: </td>
-                    <td colspan="2"><input type="text" name="Miele" value=""></td>
+                    <td colspan="2"><input class="caselle" type="text" name="Miele" value=""></td>
                 </tr>
                 <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>Capienza del barattolo: </td>
-                                <td><input type="radio" name="Capienza" value="250" checked>250 g</td>
-                                <td><input type="radio" name="Capienza" value="500">500 g</td>
-                                <td><input type="radio" name="Capienza" value="1000">1000 g</td>
-                            </tr>
-                        </table>
-                    </td>
+
+                    <td>Capienza del barattolo: </td>
+                    <td><input type="radio" name="Capienza" value="250" checked>250 g</td>
+                    <td><input type="radio" name="Capienza" value="500">500 g</td>
+                    <td><input type="radio" name="Capienza" value="1000">1000 g</td>
+
                 </tr>
                 <tr>
                     <td colspan="2">Data di confezionamento: </td>
-                    <td colspan="2"><input type="date" name="Data_confezionamento" <?php echo "value = '$Data_confezionamento'" ?>></td>
+                    <td colspan="2"><input class="caselle" type="date" name="Data_confezionamento" <?php echo "value = '$Data_confezionamento'" ?>></td>
                 </tr>
                 <tr>
                     <?php
-                    echo "<table>";
-                    echo "<p> Ora seleziona un magazzino libero in cui il tuo prodotto verrà depositato: </p>";
-                    echo "<tr> <th></th> <th>Codice del magazzino</th> <th>Comune</th> <th>Via</th> <th>Civico</th> </tr>";
+                    echo "<table class='tabella_input_2_colonne'>";
+                    echo "<p class='paddingaggiuntivo' id='cursive'> Ora seleziona un magazzino libero in cui il tuo prodotto verrà depositato: </p>";
+                    echo "<tr>  <th>CODICE DEL MAGAZZINO</th> <th>COMUNE</th> <th>VIA</th> <th>CIVICO</th> </tr>";
                     $sql2 = " SELECT magazzino.Codice_magazzino, magazzino.Citta,  magazzino.Via, magazzino.Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza
                             FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
                             GROUP BY magazzino.Codice_magazzino
@@ -104,8 +115,7 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
                         echo "
                         <tr>
-                            <td><input type='radio' name='Codice_magazzino' value='$Codice_magazzino'/></td>
-                            <td>$Codice_magazzino</td>
+                            <td><input type='radio' name='Codice_magazzino' value='$Codice_magazzino'/> $Codice_magazzino</td>
                             <td>$Citta</td>
                             <td>$Via</td>
                             <td>$Civico</td>
@@ -117,7 +127,7 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
                 </tr>
             </table>
-            <p><input type="submit" value="Invia"></p>
+            <p><input class="caselle" id="accedi" type="submit" value="Vendi ora"></p>
         </form>
     </div>
 
@@ -143,29 +153,29 @@ if ($_SESSION["tipologia"] != "apicoltore") {
         // 			WHERE cod_libro = '$libro'"; 
 
         echo "<p> Al termine della transazione verrai pagato $Prezzo ,00 euro</p>";
-    
 
-    $Codice_magazzino = $_SESSION["Codice_magazzino"];
-    // $Citta=$_SESSION["Citta"];
-    // $Via=$_SESSION["Via"];
-    // $Civico=$_SESSION["Civico"];
-    $Prezzo = $_SESSION["Prezzo"];
-    $Miele = $_SESSION["Miele"];
-    // $sql3 = "SELECT apicoltore.Codice_apicoltore
-    //             FROM apicoltore
-    //             WHERE apicoltore.Numero_telefono ='$Numero_telefono'";
 
-    // $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->errore
-    $Codice_apicoltore = $_SESSION["Codice_utente"];
-    $Data_immagazzinamento = date("Y-m-d", time() );
+        $Codice_magazzino = $_SESSION["Codice_magazzino"];
+        // $Citta=$_SESSION["Citta"];
+        // $Via=$_SESSION["Via"];
+        // $Civico=$_SESSION["Civico"];
+        $Prezzo = $_SESSION["Prezzo"];
+        $Miele = $_SESSION["Miele"];
+        // $sql3 = "SELECT apicoltore.Codice_apicoltore
+        //             FROM apicoltore
+        //             WHERE apicoltore.Numero_telefono ='$Numero_telefono'";
 
-    $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Data_immagazzinamento, Prezzo)
+        // $ris3 = $conn->query($sql3) or die("<p>Query fallita!</p>")-$conn->errore
+        $Codice_apicoltore = $_SESSION["Codice_utente"];
+        $Data_immagazzinamento = date("Y-m-d", time());
+
+        $sql4 = "INSERT INTO barattolo (Capienza, Codice_apicoltore, Codice_magazzino, Nome_miele, Data_confezionamento, Data_immagazzinamento, Prezzo)
                     VALUES ('$Capienza', '$Codice_apicoltore', ' $Codice_magazzino', '$Miele', '$Data_confezionamento', '$Data_immagazzinamento', '$Prezzo')";
-    $conn->query('SET FOREIGN_KEY_CHECKS=0;');
-    $ris3 = $conn->query($sql4) or die("<p>Query fallita!-$conn->error</p>");
-    $conn->query('SET FOREIGN_KEY_CHECKS=1;');
-    
-    $conn->close();
+        $conn->query('SET FOREIGN_KEY_CHECKS=0;');
+        $ris3 = $conn->query($sql4) or die("<p>Query fallita!-$conn->error</p>");
+        $conn->query('SET FOREIGN_KEY_CHECKS=1;');
+
+        $conn->close();
     }
     ?>
     <?php
