@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION["E_mail"])) $E_mail = $_SESSION["E_mail"]; else $E_mail = "";
 if (isset($_SESSION["Numero_telefono"])) $Numero_telefono = $_SESSION["Numero_telefono"]; else $Numero_telefono = "";
 if (isset($_SESSION["Password"])) $Password = $_SESSION["Password"]; else $Password = "";
-if (isset($_SESSION["Codice_cliente"])) $Codice_cliente = $_SESSION["Codice_cliente"]; else $Codice_cliente = "";
+if (isset($_SESSION["Codice_utente"])) $Codice_cliente = $_SESSION["Codice_utente"]; else $Codice_cliente = "";
 
 $db_servername = "localhost";
 $db_name = "miele";
@@ -59,6 +59,7 @@ if ($_SESSION["tipologia"] != "cliente") {
 </head>
 
 <body>
+
     <div class="header">
         <ul class="header__menu">
             <li><a id="black" href="miele.php">I nostri prodotti</a></li>
@@ -73,9 +74,13 @@ if ($_SESSION["tipologia"] != "cliente") {
 
     <div class="container__Intro__text reveal" id="backwhite">
     <h1>Ecco qui il suo carrello:</h1>
+   
+            
     <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+
         <?php
-        $Codice_cliente = $_SESSION["Codice_cliente"];
+        
+        $Codice_cliente = $_SESSION["Codice_utente"];
         $sql = "  SELECT barattolo.Codice_barattolo, barattolo.Codice_apicoltore, barattolo.Prezzo, barattolo.Nome_miele, Barattolo.Capienza
                 FROM barattolo
                 WHERE barattolo.Codice_cliente= '$Codice_cliente' ";
@@ -86,7 +91,7 @@ if ($_SESSION["tipologia"] != "cliente") {
             echo "<table id='tabella_selezione_libri'>";
             echo "<tr> <th>Codice Barattolo</th> <th>Codice Apicoltore</th> <th>Prezzo</th> <th> Tipo di miele </th> <th> Capienza</th> <th></th> </tr>";
             foreach ($ris as $riga) {
-                $Codice_Barattolo = $riga["Codice_Barattolo"];
+                $Codice_Barattolo = $riga["Codice_barattolo"];
                 $Codice_apicoltore = $riga["Codice_apicoltore"];
                 $Prezzo = $riga["Prezzo"];
                 $Nome_miele = $riga["Nome_miele"];
@@ -94,6 +99,7 @@ if ($_SESSION["tipologia"] != "cliente") {
 
                 echo "
                     <tr>
+                    <td>$Codice_Barattolo</td>
 					<td>$Codice_apicoltore</td>
 					<td>$Prezzo</td>
 					<td>$Nome_miele</td>

@@ -72,11 +72,11 @@ if ($tipologia == "cliente") {
             <table class="tab_dati_personali">
                 <tr>
                     <td class="Login">Nome:</td>
-                    <td class="Login"><input class="caselle" type="text" name="Nome" <?php echo "value = '$Nome'" ?>></td>
+                    <td class="Login"><input class="caselle" type="text" name="Nome" <?php echo "value = '$Nome'" ?> required></td>
                 </tr>
                 <tr>
                     <td class="Login">Cognome:</td>
-                    <td class="Login"><input class="caselle" type="text" name="Cognome" <?php echo "value = '$Cognome'" ?>></td>
+                    <td class="Login"><input class="caselle" type="text" name="Cognome" <?php echo "value = '$Cognome'" ?>required></td>
                 </tr>
                 <tr>
                     <td class="Login">Email:</td>

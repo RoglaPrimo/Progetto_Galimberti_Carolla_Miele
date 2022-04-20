@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </head>
 
-<body>
+<body class="footer_scuro">
     <div class="header">
         <ul class="header__menu">
             <li><a id="black" href="miele.php">I nostri prodotti</a></li>
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </ul>
     </div>
 
-    <div class="container__Intro__text reveal" id="backwhite">
+    <div class="container__Intro__text reveal" id="backwhite3">
         <h1>SCEGLI IL MIELE CHE TI INTERESSA E LA CAPIENZA DEL BARATTOLO</h1>
 
         <form action="negozio.php" method="post">
@@ -168,8 +168,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($ris->num_rows > 0) {
             echo "<p>Scegli tra i barattoli trovati secondo le tue preferenze.</p>";
-            echo "<table>";
-            echo "<tr> <th></th> <th>Codice del barattolo</th> <th>Tipo di miele</th> <th>Capienza del barattolo</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th> <th>Apicoltore</th> <th>Codice magazzino</th> <th>Prezzo del barattolo</th></tr>";
+            echo "<table class='ape'>";
+            echo "<tr>  <th>Codice del barattolo</th> <th>Tipo di miele</th> <th>Capienza del barattolo</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th> <th>Apicoltore</th> <th>Codice magazzino</th> <th>Prezzo del barattolo</th></tr>";
 
             foreach ($ris as $riga) {
                 $Codice_barattolo = $riga["Codice_barattolo"];
@@ -182,7 +182,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "
                     <tr>
                         <td><input type='checkbox' name='Codice_barattolo[]' value='$Codice_barattolo'/></td>
-                        <td>$Codice_barattolo</td>
                         <td>$MieleNome</td>
                         <td>$Capienza</td>
                         <td>$Data_confezionamento</td>
@@ -194,8 +193,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "</table>";
         }
 
-        echo '<p><input type="submit" value="Aggiungi al carrello"></p>';
-        echo '</form>';
+        echo '<p><input  class="caselle" style="margin-bottom:30px;" type="submit" value="Aggiungi al carrello"></p>';
+        echo '</form>'; 
     }
     ?>
         <!-- </div>
