@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versione server:              10.4.21-MariaDB - mariadb.org binary distribution
+-- Versione server:              10.4.24-MariaDB - mariadb.org binary distribution
 -- S.O. server:                  Win64
 -- HeidiSQL Versione:            11.3.0.6295
 -- --------------------------------------------------------
@@ -24,18 +24,19 @@ CREATE TABLE IF NOT EXISTS `apicoltore` (
   `Codice_apicoltore` int(11) NOT NULL AUTO_INCREMENT,
   `E_mail` char(150) DEFAULT NULL,
   `Numero_telefono` int(11) DEFAULT NULL,
-  `Città` char(50) DEFAULT NULL,
+  `Citta` char(50) DEFAULT NULL,
   `Via` char(50) DEFAULT NULL,
   `Civico` int(11) DEFAULT NULL,
   `Password` char(50) DEFAULT NULL,
   PRIMARY KEY (`Codice_apicoltore`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella miele.apicoltore: ~2 rows (circa)
+-- Dump dei dati della tabella miele.apicoltore: ~3 rows (circa)
 /*!40000 ALTER TABLE `apicoltore` DISABLE KEYS */;
-INSERT INTO `apicoltore` (`Nome`, `Cognome`, `Codice_apicoltore`, `E_mail`, `Numero_telefono`, `Città`, `Via`, `Civico`, `Password`) VALUES
+INSERT INTO `apicoltore` (`Nome`, `Cognome`, `Codice_apicoltore`, `E_mail`, `Numero_telefono`, `Citta`, `Via`, `Civico`, `Password`) VALUES
 	('Matteo', 'Carolla', 1, 'matteo.carolla@liceobanfi.eu', 2147483647, 'Cambiago', 'Della Libertà', 13, 'GC'),
-	('Andrea', 'Galimberti', 2, 'andrea.galimberti@liceobanfi.eu', 2147483647, 'Verona', 'Garibaldi', 2, '3004');
+	('Andrea', 'Galimberti', 2, 'andrea.galimberti@liceobanfi.eu', 2147483647, 'Verona', 'Garibaldi', 2, '3004'),
+	('', '', 3, 'hello.bitvh@gmail.com', 0, '', '', 0, 'yyy');
 /*!40000 ALTER TABLE `apicoltore` ENABLE KEYS */;
 
 -- Dump della struttura di tabella miele.barattolo
@@ -58,15 +59,15 @@ CREATE TABLE IF NOT EXISTS `barattolo` (
   CONSTRAINT `FK_barattolo_cliente` FOREIGN KEY (`Codice_cliente`) REFERENCES `cliente` (`Codice_cliente`) ON UPDATE CASCADE,
   CONSTRAINT `FK_barattolo_magazzino` FOREIGN KEY (`Codice_magazzino`) REFERENCES `magazzino` (`Codice_magazzino`) ON UPDATE CASCADE,
   CONSTRAINT `FK_barattolo_miele` FOREIGN KEY (`Nome_miele`) REFERENCES `miele` (`Nome`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella miele.barattolo: ~60 rows (circa)
+-- Dump dei dati della tabella miele.barattolo: ~62 rows (circa)
 /*!40000 ALTER TABLE `barattolo` DISABLE KEYS */;
 INSERT INTO `barattolo` (`Capienza`, `Codice_barattolo`, `Codice_apicoltore`, `Codice_magazzino`, `Nome_miele`, `Data_confezionamento`, `Data_immagazzinamento`, `Codice_cliente`, `Prezzo`) VALUES
 	(250, 1, 1, 1, 'Acacia', '2022-04-05', '2022-04-09', 1, 4),
-	(250, 2, 1, 1, 'Acacia', '2022-04-05', '2022-04-09', NULL, 4),
-	(500, 3, 1, 1, 'Acacia', '2022-04-05', '2022-04-13', NULL, NULL),
-	(500, 4, 1, 1, 'Acacia', '2022-04-05', '2022-04-13', NULL, NULL),
+	(250, 2, 1, 1, 'Acacia', '2022-04-05', '2022-04-09', 2, 4),
+	(500, 3, 1, 1, 'Acacia', '2022-04-05', '2022-04-13', 2, NULL),
+	(500, 4, 1, 1, 'Acacia', '2022-04-05', '2022-04-13', 2, NULL),
 	(1000, 5, 1, 1, 'Acacia', '2022-04-05', '2022-04-13', NULL, NULL),
 	(1000, 6, 1, 1, 'Acacia', '2022-04-05', '2022-04-13', NULL, NULL),
 	(250, 7, 1, 1, 'Castagno', '2022-04-06', '2022-04-13', NULL, NULL),
@@ -95,8 +96,8 @@ INSERT INTO `barattolo` (`Capienza`, `Codice_barattolo`, `Codice_apicoltore`, `C
 	(1000, 30, 1, 2, 'Rododendro', '2022-04-09', '2022-04-13', NULL, NULL),
 	(250, 31, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', NULL, NULL),
 	(250, 32, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', NULL, NULL),
-	(500, 33, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', NULL, NULL),
-	(500, 34, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', NULL, NULL),
+	(500, 33, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', 2, NULL),
+	(500, 34, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', 2, NULL),
 	(1000, 35, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', NULL, NULL),
 	(1000, 36, 2, 2, 'Millefiori', '2022-04-10', '2022-04-13', NULL, NULL),
 	(250, 37, 2, 2, 'Timo', '2022-04-11', '2022-04-13', NULL, NULL),
@@ -111,18 +112,20 @@ INSERT INTO `barattolo` (`Capienza`, `Codice_barattolo`, `Codice_apicoltore`, `C
 	(500, 46, 2, 3, 'Girasole', '2022-04-12', '2022-04-13', NULL, NULL),
 	(1000, 47, 2, 3, 'Girasole', '2022-04-12', '2022-04-13', NULL, NULL),
 	(1000, 48, 2, 3, 'Girasole', '2022-04-12', '2022-04-13', NULL, NULL),
-	(250, 49, 2, 3, 'Erba_medica', '2022-04-13', '2022-04-13', NULL, NULL),
-	(250, 50, 2, 3, 'Erba_medica', '2022-04-13', '2022-04-13', NULL, NULL),
-	(500, 51, 2, 3, 'Erba_medica', '2022-04-13', '2022-04-13', NULL, NULL),
-	(500, 52, 2, 3, 'Erba_medica', '2022-04-13', '2022-04-13', NULL, NULL),
-	(1000, 53, 2, 3, 'Erba_medica', '2022-04-13', '2022-04-13', NULL, NULL),
-	(1000, 54, 2, 3, 'Erba_medica', '2022-04-13', '2022-04-13', NULL, NULL),
+	(250, 49, 2, 3, 'Erba medica', '2022-04-13', '2022-04-13', NULL, NULL),
+	(250, 50, 2, 3, 'Erba medica', '2022-04-13', '2022-04-13', NULL, NULL),
+	(500, 51, 2, 3, 'Erba medica', '2022-04-13', '2022-04-13', 2, NULL),
+	(500, 52, 2, 3, 'Erba medica', '2022-04-13', '2022-04-13', NULL, NULL),
+	(1000, 53, 2, 3, 'Erba medica', '2022-04-13', '2022-04-13', NULL, NULL),
+	(1000, 54, 2, 3, 'Erba medica', '2022-04-13', '2022-04-13', NULL, NULL),
 	(250, 55, 2, 3, 'Eucalipto', '2022-04-14', '2022-04-15', NULL, NULL),
 	(250, 56, 2, 3, 'Eucalipto', '2022-04-14', '2022-04-15', NULL, NULL),
 	(500, 57, 2, 3, 'Eucalipto', '2022-04-14', '2022-04-15', NULL, NULL),
 	(500, 58, 2, 3, 'Eucalipto', '2022-04-14', '2022-04-15', NULL, NULL),
 	(1000, 59, 2, 3, 'Eucalipto', '2022-04-14', '2022-04-15', NULL, NULL),
-	(1000, 60, 2, 3, 'Eucalipto', '2022-04-14', '2022-04-15', NULL, NULL);
+	(1000, 60, 2, 3, 'Eucalipto', '2022-04-14', '2022-04-15', NULL, NULL),
+	(1000, 61, 3, 3, 'Acacia', '2022-04-14', '2022-04-19', NULL, 16),
+	(500, 62, 3, 3, 'Acacia', '2022-04-15', '2022-04-19', 2, 8);
 /*!40000 ALTER TABLE `barattolo` ENABLE KEYS */;
 
 -- Dump della struttura di tabella miele.cliente
@@ -133,21 +136,22 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `Password` char(50) NOT NULL DEFAULT '0',
   `Numero_telefono` int(11) DEFAULT NULL,
   `E_mail` char(150) DEFAULT NULL,
-  `Città` char(50) DEFAULT NULL,
+  `Citta` char(50) DEFAULT NULL,
   `Via` char(50) DEFAULT NULL,
   `Civico` int(11) DEFAULT NULL,
   PRIMARY KEY (`Codice_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella miele.cliente: ~1 rows (circa)
+-- Dump dei dati della tabella miele.cliente: ~2 rows (circa)
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` (`Nome`, `Cognome`, `Codice_cliente`, `Password`, `Numero_telefono`, `E_mail`, `Città`, `Via`, `Civico`) VALUES
-	('Andrea', 'Galimberti', 1, '300404', 2147483647, 'andrea.galimberti@liceobanfi.eu', 'Caponago', 'Roma', 51);
+INSERT INTO `cliente` (`Nome`, `Cognome`, `Codice_cliente`, `Password`, `Numero_telefono`, `E_mail`, `Citta`, `Via`, `Civico`) VALUES
+	('Andrea', 'Galimberti', 1, '300404', 2147483647, 'andrea.galimberti@liceobanfi.eu', 'Caponago', 'Roma', 51),
+	('yyyy', 'yyyy', 2, 'yyy', 66666666, 'hello.bitvh@gmail.com', 'yui', 'iop', 89);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 -- Dump della struttura di tabella miele.magazzino
 CREATE TABLE IF NOT EXISTS `magazzino` (
-  `Città` char(50) DEFAULT NULL,
+  `Citta` char(50) DEFAULT NULL,
   `Via` char(50) DEFAULT NULL,
   `Civico` int(11) DEFAULT NULL,
   `Superficie` int(11) DEFAULT NULL,
@@ -158,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `magazzino` (
 
 -- Dump dei dati della tabella miele.magazzino: ~3 rows (circa)
 /*!40000 ALTER TABLE `magazzino` DISABLE KEYS */;
-INSERT INTO `magazzino` (`Città`, `Via`, `Civico`, `Superficie`, `Capienza`, `Codice_magazzino`) VALUES
+INSERT INTO `magazzino` (`Citta`, `Via`, `Civico`, `Superficie`, `Capienza`, `Codice_magazzino`) VALUES
 	('Milano', 'Garibaldi', 43, 70000, 35, 1),
 	('Bergamo', 'Adamello', 12, 45000, 20, 2),
 	('Monza', 'Circonvallazione', 36, 62000, 25, 3);
@@ -179,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `miele` (
 INSERT INTO `miele` (`Nome`, `Proprietà`, `Specie_albero`, `Genere_albero`, `Prezzo`) VALUES
 	('Acacia', 'Rinforza le mammelle', 'GC', 'GC', 16),
 	('Castagno', NULL, NULL, NULL, 20),
-	('Erba_medica', NULL, NULL, NULL, 14),
+	('Erba medica', NULL, NULL, NULL, 14),
 	('Eucalipto', NULL, NULL, NULL, 19),
 	('Girasole', NULL, NULL, NULL, 18),
 	('Millefiori', NULL, NULL, NULL, 12),
