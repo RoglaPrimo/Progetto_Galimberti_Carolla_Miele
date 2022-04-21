@@ -391,6 +391,49 @@ body {
     border-radius: 15px;
     margin: 30px 50px;
 }
+
+.Erba_medica
+{
+    border: 15px solid rgba(138, 98, 19, 0.521);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
+.Eucalipto
+{
+    border: 15px solid rgba(154, 231, 31, 0.521);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
+.Girasole
+{
+    border: 15px solid rgba(255, 238, 3, 0.788);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
+.Millefiori
+{
+    border: 15px solid rgba(212, 182, 11, 0.521);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
+.Rododendro
+{
+    border: 15px solid rgba(219, 17, 192, 0.815);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
+.Timo
+{
+    border: 15px solid rgba(179, 13, 13, 0.521);
+    border-radius: 15px;
+    margin: 30px 50px;
+}
+
 .container__Intro__text2 {
     width: 70%;
     align-content: center;

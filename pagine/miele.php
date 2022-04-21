@@ -157,12 +157,41 @@ Una particolarità che permette di riconoscere immediatamente questo miele è il
     </div>
 
 
-    <div class="Castagno group">
+    <div class="Erba_medica group">
         <div class="container__Miele__img zoom pipi">
-            <img src="../immagini/Castagno-removebg-preview.png" alt="">
+            <img src="../immagini/erba.png" alt="">
         </div>
         <div class="container__Miele__text">
-            <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
+            <h2 class="big-text reveal azzurro">MIELE DI ERBA MEDICA</h2>
+            <p class="reveal2">L’erba medica (Medicago sativa, della famiglia delle leguminose), è una delle piante piu’ antiche della famiglia delle leguminose. Si ritiene che  sia originaria delle regioni dell’Asia occidentale, quali la Media (donde il nome) e la Persia, caratterizzate da un clima continentale con primavere tardive ed estati molto calde e brevi. Con i nomadi delle steppe migrò verso la Cina, il Nord Africa e l’Europa. Venne introdotta in Grecia dai persiani nel 492-490 a.C. In Italia giunse tra il 200 ed il 150 a.C.  Nel Nord Italia Italia viene chiamata anche “erba Spagna”, poiché è dalla Spagna che la leguminosa venne reintrodotta nel XV secolo. Il suo nome arabo, “alfa-alfa”, significa invece “padre di tutti i cibi”.</p>
+            <p class="reveal2">L’erba medica e’ stata impiegata per anni come alimento per gli animali erbivori, recentemente si è cominciato a utilizzarla anche come alimento umano: si possono ricavarne pane, frittelle e the e viene venduta sotto forma di germogli, di semi, di compresse, e foglie per preparare il the. Sembra accertato che la ricchezza dei suoi valori nutritivi risieda nel fatto che le sue radici scavano profondamente il terreno, alla ricerca dei minerali sepolti sotto la radice del suolo. cartina_it_erba_medicaLe sue radici sono lunghe in media dai 3 ai 6 metri. </p>
+            <p class="reveal2">E’ una pianta perenne, cresce facilmente in ogni tipo di terreno, e quasi sotto ogni clima, ma sono condizioni calde ed umide che garantiscono i migliori raccolti di miele. Poichè raramente si realizzano, le produzioni di miele di erba medica sono di anno in anno oscillanti. Caratteristico è il meccanismo di “scatto”  con cui il fiore su apre, per permettere l’impollinazione incrociata, al contatto con le api, “schiaffeggiandole” o imprigionandole: un meccanismo che dopo alcune esperienze le api imparano a evitare operando di lato e in velocità. Fiorisce da maggio a settembre, ma rende solo quando viene fatta fiorire completamente per la produzione del seme.</p>
+            <p class="reveal2">Cristallizza spontaneamente a pochi mesi dal raccolto, il colore è da ambra a ambra chiaro nel miele liquido, da beige chiaro a nocciola quando cristallizzato. L’odore e l’aroma sono di media intensità, così la persistenza. E’ un miele con una notevole acidità.</p>
+        </div>
+    </div>
+
+    <div class="Eucalipto group">
+        <div class="container__Miele__img zoom pipi">
+            <img src="../immagini/eucalipto.png" alt="">
+        </div>
+        <div class="container__Miele__text">
+            <h2 class="big-text reveal azzurro">MIELE DI EUCALIPTO</h2>
+            <p class="reveal2">Il miele di eucalipto è uno dei mieli migliori che produciamo in Italia ed è usato per le sue proprietà salutari verso i malesseri dell'apparato respiratorio. Scopriamo le caratteristiche, le proprietà e gli usi.</p>
+            <p class="reveal2">La consistenza di questo miele è compatta e il colore è ambrato che vira verso il grigio con consistenza ancora più compatta.La sua cristallizzazione avviene in pochi mesi e la granulometria è assai fine. Il sapore è forte, intenso e particolarmente balsamico: per alcuni ricorda i funghi, il legno e il curry, mentre altri vi sentono il sapore dell'elicriso e delle caramelle alla liquerizia.Il gusto comunque non è troppo dolce e anche l’acidità è moderata.</p>
+            <p class="reveal2">
+Miele di eucalipto, proprietà e usi in cucina
+Andiamo a conoscere le caratteristiche del miele di eucalipto, le proprietà benefiche per il nostro organismo e come utilizzarlo
+di MIRA TONIONIMiele di eucalipto, proprietà e usi in cucinaIl miele di eucalipto è uno dei mieli migliori che produciamo in Italia ed è usato per le sue proprietà salutari verso i malesseri dell'apparato respiratorio. Scopriamo le caratteristiche, le proprietà e gli usi. </p>
+            <p class="reveal2">Caratteristiche del miele di eucaliptoLa consistenza di questo miele è compatta e il colore è ambrato che vira verso il grigio con consistenza ancora più compatta.La sua cristallizzazione avviene in pochi mesi e la granulometria è assai fine. Il sapore è forte, intenso e particolarmente balsamico: per alcuni ricorda i funghi, il legno e il curry, mentre altri vi sentono il sapore dell'elicriso e delle caramelle alla liquerizia.Il gusto comunque non è troppo dolce e anche l’acidità è moderata. Proprietà e benefici del miele di eucaliptoIl miele di eucalipto viene utilizzato principalmente contro la tosse e le malattie tipiche dell'apparato respiratorio come il raffreddore, oltre che in generale per i malesseri dovuti a stati di infiammazione. Queste sue proprietà non sono ancora state accertate a livello scientifico anche se per quanto riguarda l'olio essenziale di eucalipto ci sono già risultati anche di studi che dimostrano la sua efficacia contro diversi batteri e virus.Il miele di eucalipto contiene molte sostanze antiossidanti e in particolare i flavonoidi che concorrono a mantenere il benessere del corpo perché riducono i radicali liberi che sono responsabili dell’invecchiamento cellulare.Il miele di eucalipto diviene così un alimento da poter assumere come prevenzione alle malattie degenerative e nel caso di fenomeni infiammatori tanto che ricerche che mettono a confronto diversi tipi di miele hanno dichiarato il miele di eucalipto come miglior antiossidante e antinvecchiamento.</p>
+        </div>
+    </div>
+
+    <div class="Girasole group">
+        <div class="container__Miele__img zoom pipi">
+            <img src="../immagini/girasole.png" alt="">
+        </div>
+        <div class="container__Miele__text">
+            <h2 class="big-text reveal azzurro">MIELE DI GIRASOLE</h2>
             <p class="reveal2">Come la Ciclamino, anche la Maglia Azzurra viene indossata dal leader di una classifica basata a punti, ovvero la classifica dei GPM (acronimo di Gran Premio della Montagna).</p>
             <p class="reveal2">La maglia viene indossata in gara dal corridore che alla fine della tappa precedente possiede il monte punti, relativo a questa classifica, più alto. Questa particolare classifica può essere vinta da qualsiasi tipo di corridore (ad eccezione ovviamento dei velocisti che con la salita non hanno un buon rapporto!).</p>
             <p class="reveal2">Come si ottengono i punti per la Maglia Azzurra? Essi possono essere raccolti allo scollinamento di qualsiasi salita relativamente lunga. I punti vengono assegnati in base alla posizione ottenuta in cima (chi transita per primo raccoglie più punti) e soprattutto in base alla difficoltà della salita. Proprio per questo, i GPM sono suddivisi in quattro categorie, dalla quarta (per le salite più semplici) alla prima (per quelle più dure). Vi è poi, in tutta l'edizione, una salita di prima categoria d'eccezione, diversa da tutte le altre e che fornisce più punti. Si tratta della Cima Coppi, chiamata così in onore del "Campionissimo" Fausto Coppi. Essa rappresenta il punto più alto in altitudine toccato dalla corsa durante l'intera edizione e varia di anno in anno a seconda del percorso e del profilo altimetrico scelto dagli organizzatori di gara. Quest'anno la Cima Coppi sarà rappresentata dal Passo Pordoi ad una quota di 2239 metri sul livello del mare, Pordoi che vanta il numero di presenze come salita (40) e come Cima Coppi (13) nella storia del Giro. Cima Coppi per antonomasia è però il Passo dello Stelvio che, con i suoi 2758 metri di quota, rappresenta il punto più alto mai toccato dal Giro d'Italia.</p>
@@ -170,12 +199,12 @@ Una particolarità che permette di riconoscere immediatamente questo miele è il
         </div>
     </div>
 
-    <div class="Castagno group">
+    <div class="Millefiori group">
         <div class="container__Miele__img zoom pipi">
-            <img src="../immagini/Castagno-removebg-preview.png" alt="">
+            <img src="../immagini/millefiori.png" alt="">
         </div>
         <div class="container__Miele__text">
-            <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
+            <h2 class="big-text reveal azzurro">MIELE DI MILLEFIORI</h2>
             <p class="reveal2">Come la Ciclamino, anche la Maglia Azzurra viene indossata dal leader di una classifica basata a punti, ovvero la classifica dei GPM (acronimo di Gran Premio della Montagna).</p>
             <p class="reveal2">La maglia viene indossata in gara dal corridore che alla fine della tappa precedente possiede il monte punti, relativo a questa classifica, più alto. Questa particolare classifica può essere vinta da qualsiasi tipo di corridore (ad eccezione ovviamento dei velocisti che con la salita non hanno un buon rapporto!).</p>
             <p class="reveal2">Come si ottengono i punti per la Maglia Azzurra? Essi possono essere raccolti allo scollinamento di qualsiasi salita relativamente lunga. I punti vengono assegnati in base alla posizione ottenuta in cima (chi transita per primo raccoglie più punti) e soprattutto in base alla difficoltà della salita. Proprio per questo, i GPM sono suddivisi in quattro categorie, dalla quarta (per le salite più semplici) alla prima (per quelle più dure). Vi è poi, in tutta l'edizione, una salita di prima categoria d'eccezione, diversa da tutte le altre e che fornisce più punti. Si tratta della Cima Coppi, chiamata così in onore del "Campionissimo" Fausto Coppi. Essa rappresenta il punto più alto in altitudine toccato dalla corsa durante l'intera edizione e varia di anno in anno a seconda del percorso e del profilo altimetrico scelto dagli organizzatori di gara. Quest'anno la Cima Coppi sarà rappresentata dal Passo Pordoi ad una quota di 2239 metri sul livello del mare, Pordoi che vanta il numero di presenze come salita (40) e come Cima Coppi (13) nella storia del Giro. Cima Coppi per antonomasia è però il Passo dello Stelvio che, con i suoi 2758 metri di quota, rappresenta il punto più alto mai toccato dal Giro d'Italia.</p>
@@ -183,12 +212,12 @@ Una particolarità che permette di riconoscere immediatamente questo miele è il
         </div>
     </div>
 
-    <div class="Castagno group">
+    <div class="Rododendro group">
         <div class="container__Miele__img zoom pipi">
-            <img src="../immagini/Castagno-removebg-preview.png" alt="">
+            <img src="../immagini/rododendro.png" alt="">
         </div>
         <div class="container__Miele__text">
-            <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
+            <h2 class="big-text reveal azzurro">MIELE DI RODODENDRO</h2>
             <p class="reveal2">Come la Ciclamino, anche la Maglia Azzurra viene indossata dal leader di una classifica basata a punti, ovvero la classifica dei GPM (acronimo di Gran Premio della Montagna).</p>
             <p class="reveal2">La maglia viene indossata in gara dal corridore che alla fine della tappa precedente possiede il monte punti, relativo a questa classifica, più alto. Questa particolare classifica può essere vinta da qualsiasi tipo di corridore (ad eccezione ovviamento dei velocisti che con la salita non hanno un buon rapporto!).</p>
             <p class="reveal2">Come si ottengono i punti per la Maglia Azzurra? Essi possono essere raccolti allo scollinamento di qualsiasi salita relativamente lunga. I punti vengono assegnati in base alla posizione ottenuta in cima (chi transita per primo raccoglie più punti) e soprattutto in base alla difficoltà della salita. Proprio per questo, i GPM sono suddivisi in quattro categorie, dalla quarta (per le salite più semplici) alla prima (per quelle più dure). Vi è poi, in tutta l'edizione, una salita di prima categoria d'eccezione, diversa da tutte le altre e che fornisce più punti. Si tratta della Cima Coppi, chiamata così in onore del "Campionissimo" Fausto Coppi. Essa rappresenta il punto più alto in altitudine toccato dalla corsa durante l'intera edizione e varia di anno in anno a seconda del percorso e del profilo altimetrico scelto dagli organizzatori di gara. Quest'anno la Cima Coppi sarà rappresentata dal Passo Pordoi ad una quota di 2239 metri sul livello del mare, Pordoi che vanta il numero di presenze come salita (40) e come Cima Coppi (13) nella storia del Giro. Cima Coppi per antonomasia è però il Passo dello Stelvio che, con i suoi 2758 metri di quota, rappresenta il punto più alto mai toccato dal Giro d'Italia.</p>
@@ -196,38 +225,12 @@ Una particolarità che permette di riconoscere immediatamente questo miele è il
         </div>
     </div>
 
-    <div class="Castagno group">
+    <div class="Timo group">
         <div class="container__Miele__img zoom pipi">
-            <img src="../immagini/Castagno-removebg-preview.png" alt="">
+            <img src="../immagini/timo.png" alt="">
         </div>
         <div class="container__Miele__text">
-            <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
-            <p class="reveal2">Come la Ciclamino, anche la Maglia Azzurra viene indossata dal leader di una classifica basata a punti, ovvero la classifica dei GPM (acronimo di Gran Premio della Montagna).</p>
-            <p class="reveal2">La maglia viene indossata in gara dal corridore che alla fine della tappa precedente possiede il monte punti, relativo a questa classifica, più alto. Questa particolare classifica può essere vinta da qualsiasi tipo di corridore (ad eccezione ovviamento dei velocisti che con la salita non hanno un buon rapporto!).</p>
-            <p class="reveal2">Come si ottengono i punti per la Maglia Azzurra? Essi possono essere raccolti allo scollinamento di qualsiasi salita relativamente lunga. I punti vengono assegnati in base alla posizione ottenuta in cima (chi transita per primo raccoglie più punti) e soprattutto in base alla difficoltà della salita. Proprio per questo, i GPM sono suddivisi in quattro categorie, dalla quarta (per le salite più semplici) alla prima (per quelle più dure). Vi è poi, in tutta l'edizione, una salita di prima categoria d'eccezione, diversa da tutte le altre e che fornisce più punti. Si tratta della Cima Coppi, chiamata così in onore del "Campionissimo" Fausto Coppi. Essa rappresenta il punto più alto in altitudine toccato dalla corsa durante l'intera edizione e varia di anno in anno a seconda del percorso e del profilo altimetrico scelto dagli organizzatori di gara. Quest'anno la Cima Coppi sarà rappresentata dal Passo Pordoi ad una quota di 2239 metri sul livello del mare, Pordoi che vanta il numero di presenze come salita (40) e come Cima Coppi (13) nella storia del Giro. Cima Coppi per antonomasia è però il Passo dello Stelvio che, con i suoi 2758 metri di quota, rappresenta il punto più alto mai toccato dal Giro d'Italia.</p>
-            <p class="reveal2">Nella tabella seguente sono riportati i punti assegnati ai corridori in funzione alla categoria del GPM e alla posizione ottenuta dal corridore in corrispondenza di esso.</p>
-        </div>
-    </div>
-
-    <div class="Castagno group">
-        <div class="container__Miele__img zoom pipi">
-            <img src="../immagini/Castagno-removebg-preview.png" alt="">
-        </div>
-        <div class="container__Miele__text">
-            <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
-            <p class="reveal2">Come la Ciclamino, anche la Maglia Azzurra viene indossata dal leader di una classifica basata a punti, ovvero la classifica dei GPM (acronimo di Gran Premio della Montagna).</p>
-            <p class="reveal2">La maglia viene indossata in gara dal corridore che alla fine della tappa precedente possiede il monte punti, relativo a questa classifica, più alto. Questa particolare classifica può essere vinta da qualsiasi tipo di corridore (ad eccezione ovviamento dei velocisti che con la salita non hanno un buon rapporto!).</p>
-            <p class="reveal2">Come si ottengono i punti per la Maglia Azzurra? Essi possono essere raccolti allo scollinamento di qualsiasi salita relativamente lunga. I punti vengono assegnati in base alla posizione ottenuta in cima (chi transita per primo raccoglie più punti) e soprattutto in base alla difficoltà della salita. Proprio per questo, i GPM sono suddivisi in quattro categorie, dalla quarta (per le salite più semplici) alla prima (per quelle più dure). Vi è poi, in tutta l'edizione, una salita di prima categoria d'eccezione, diversa da tutte le altre e che fornisce più punti. Si tratta della Cima Coppi, chiamata così in onore del "Campionissimo" Fausto Coppi. Essa rappresenta il punto più alto in altitudine toccato dalla corsa durante l'intera edizione e varia di anno in anno a seconda del percorso e del profilo altimetrico scelto dagli organizzatori di gara. Quest'anno la Cima Coppi sarà rappresentata dal Passo Pordoi ad una quota di 2239 metri sul livello del mare, Pordoi che vanta il numero di presenze come salita (40) e come Cima Coppi (13) nella storia del Giro. Cima Coppi per antonomasia è però il Passo dello Stelvio che, con i suoi 2758 metri di quota, rappresenta il punto più alto mai toccato dal Giro d'Italia.</p>
-            <p class="reveal2">Nella tabella seguente sono riportati i punti assegnati ai corridori in funzione alla categoria del GPM e alla posizione ottenuta dal corridore in corrispondenza di esso.</p>
-        </div>
-    </div>
-
-    <div class="Castagno group">
-        <div class="container__Miele__img zoom pipi">
-            <img src="../immagini/Castagno-removebg-preview.png" alt="">
-        </div>
-        <div class="container__Miele__text">
-            <h2 class="big-text reveal azzurro">MIELE DI CASTAGNO</h2>
+            <h2 class="big-text reveal azzurro">MIELE DI TIMO</h2>
             <p class="reveal2">Come la Ciclamino, anche la Maglia Azzurra viene indossata dal leader di una classifica basata a punti, ovvero la classifica dei GPM (acronimo di Gran Premio della Montagna).</p>
             <p class="reveal2">La maglia viene indossata in gara dal corridore che alla fine della tappa precedente possiede il monte punti, relativo a questa classifica, più alto. Questa particolare classifica può essere vinta da qualsiasi tipo di corridore (ad eccezione ovviamento dei velocisti che con la salita non hanno un buon rapporto!).</p>
             <p class="reveal2">Come si ottengono i punti per la Maglia Azzurra? Essi possono essere raccolti allo scollinamento di qualsiasi salita relativamente lunga. I punti vengono assegnati in base alla posizione ottenuta in cima (chi transita per primo raccoglie più punti) e soprattutto in base alla difficoltà della salita. Proprio per questo, i GPM sono suddivisi in quattro categorie, dalla quarta (per le salite più semplici) alla prima (per quelle più dure). Vi è poi, in tutta l'edizione, una salita di prima categoria d'eccezione, diversa da tutte le altre e che fornisce più punti. Si tratta della Cima Coppi, chiamata così in onore del "Campionissimo" Fausto Coppi. Essa rappresenta il punto più alto in altitudine toccato dalla corsa durante l'intera edizione e varia di anno in anno a seconda del percorso e del profilo altimetrico scelto dagli organizzatori di gara. Quest'anno la Cima Coppi sarà rappresentata dal Passo Pordoi ad una quota di 2239 metri sul livello del mare, Pordoi che vanta il numero di presenze come salita (40) e come Cima Coppi (13) nella storia del Giro. Cima Coppi per antonomasia è però il Passo dello Stelvio che, con i suoi 2758 metri di quota, rappresenta il punto più alto mai toccato dal Giro d'Italia.</p>

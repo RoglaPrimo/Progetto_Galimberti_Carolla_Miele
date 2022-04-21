@@ -57,11 +57,11 @@
         </video>
     </div>
 
-
+    
 
 
     <?php 
-    echo '<div class="footer">';
+    echo '<div class="footer reveal">';
     echo '<em>"Negozio online di miele"</em>, società di apicoltura Galimberti-Carolla di Vimercate';
     echo '<div class="Mattavelli">
         <ul class="header__menu" id="id">
