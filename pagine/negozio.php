@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </tr>
                 <tr>
                     <td colspan="2" class="centrato">
-                        <input class="caselle" type="submit" value="Filtra">
+                        <input class="caselle" style="margin-bottom: 20px" type="submit" value="Filtra">
                     </td>
                 </tr>
             </table>
@@ -181,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $Codice_magazzino = $riga["Codice_magazzino"];
                 echo "
                     <tr>
-                        <td><input type='checkbox' name='Codice_barattolo[]' value='$Codice_barattolo'/></td>
+                        <td><input type='checkbox' name='Codice_barattolo[]' value='$Codice_barattolo'/>$Codice_barattolo</td>
                         <td>$MieleNome</td>
                         <td>$Capienza</td>
                         <td>$Data_confezionamento</td>

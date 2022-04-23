@@ -113,7 +113,7 @@ body {
 
 #container__Intro
 {
-    height: 160vh;
+    height: 140vh;
     overflow-x: hidden;
 }
 
@@ -194,6 +194,7 @@ body {
     /* background-color: white; */
     margin-left: 15%;
     margin-right: 15%;
+    margin-bottom: 30px;
     color: white;
 }
 

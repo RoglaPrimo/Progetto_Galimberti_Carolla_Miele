@@ -57,20 +57,20 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
 </head>
 
-<body class="footer_scuro">
+<body>
     <div class="header">
         <ul class="header__menu">
-            <li><a id="black" href="miele.php">I nostri prodotti</a></li>
-            <li><a id="black" href="magazzino.php">Magazzino</a></li>
+            <li><a href="miele.php">I nostri prodotti</a></li>
+            <li><a href="magazzino.php">Magazzino</a></li>
             <li class="header__img">
                 <a href="home_cliente.php"><img src="../immagini/logo-removebg-preview.png" alt="Problemi nella visualizzazione del logo"></a>
             </li>
             <li><a id="active" href="vendite.php">Le tue vendite</a></li>
-            <li><a id="black" href="logout.php">Logout</a> </li>
+            <li><a href="logout.php">Logout</a> </li>
         </ul>
     </div>
 
-
+    <div class="container__Intro">
     <div class="container__Intro__text reveal" id="backwhite2" style="background-color:palegreen; color:black;">
         <h1>INSERISCI LE INFORMAZIONI DEL BARATTOLO CHE VUOI VENDERE:</h1>
         <form action="vendite.php" method="post">
@@ -128,10 +128,7 @@ if ($_SESSION["tipologia"] != "apicoltore") {
                 </tr>
             </table>
             <p><input class="caselle" id="accedi" type="submit" value="Vendi ora"></p>
-        </form>
-    </div>
-
-    <?php
+            <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Miele = $_POST["Miele"];
         $Capienza = $_POST["Capienza"];
@@ -144,7 +141,6 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
         $ris = $conn->query($sql) or die("<p>Query fallita!: " . $conn->connect_error . "</p>");
         $row = $ris->fetch_assoc();
-        echo $row['Prezzo'];
         $Prezzo = (floatval($row["Prezzo"])) * floatval((intval($Capienza) / 1000));
         $_SESSION["Prezzo"] = $Prezzo;
 
@@ -152,7 +148,7 @@ if ($_SESSION["tipologia"] != "apicoltore") {
         // 			SET barattolo.Prezzo = '$prezzo'
         // 			WHERE cod_libro = '$libro'"; 
 
-        echo "<p> Al termine della transazione verrai pagato $Prezzo ,00 euro</p>";
+        echo "<p> Al termine della transazione verrai pagato $Prezzo euro</p>";
 
 
         $Codice_magazzino = $_SESSION["Codice_magazzino"];
@@ -178,6 +174,17 @@ if ($_SESSION["tipologia"] != "apicoltore") {
         $conn->close();
     }
     ?>
+        </form>
+    </div>
+    </div>
+    <video autoplay muted loop id="video-back">
+        <source src="../immagini/Api, l'impollinazione - bees pollination Macro 1080p 60 fps Nikon 1 J2.mp4" type="video/mp4">
+    </video>
+    <!-- </div>
+    </div>
+    </div> -->
+
+    
     <?php
     include('footer.php');
     ?>

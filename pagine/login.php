@@ -70,7 +70,7 @@ $db_password = "";
             <p><input class="caselle" id="accedi" type="submit" value="Accedi"></p>
         </form>
 
-        <p id="corsivo">Non ti sei ancora registrato? <a href='registrazione.php'>Registrati</a></p>
+        <p id="corsivo" style="padding-bottom: 20px">Non ti sei ancora registrato? <a href='registrazione.php'>Registrati</a></p>
 
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
