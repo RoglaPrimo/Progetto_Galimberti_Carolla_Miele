@@ -81,18 +81,41 @@ if ($_SESSION["tipologia"] != "cliente") {
         <?php
         
         $Codice_cliente = $_SESSION["Codice_utente"];
-        $sql = "  SELECT barattolo.Codice_barattolo, barattolo.Codice_apicoltore, barattolo.Prezzo, barattolo.Nome_miele, Barattolo.Capienza
-                FROM barattolo
+        
+        $tot=array();
+        $Prezzi=0;
+            if(isset($_POST['cod_libri']))
+            {
+                $tot=$_POST['cod_libri'];
+                foreach($tot as $p)
+                {
+                    $sql1 = "SELECT barattolo.Prezzo
+                        FROM barattolo
+                        WHERE barattolo.Codice_barattolo='$p'";
+                    $ris1=$conn->query($sql1) or die("<p> query Fallita</p>");
+                    $ris1=$ris1->fetch_assoc();
+                    $Prezzi=$Prezzi+intval($ris1["Prezzo"]);
+
+                    $conn->query('SET FOREIGN_KEY_CHECKS=0;');
+                    $sql2 = " DELETE FROM barattolo WHERE barattolo.Codice_barattolo='$p'";
+                    $conn->query($sql2);
+                    $conn->query('SET FOREIGN_KEY_CHECKS=1;');
+                }
+            }
+
+        $sql = "  SELECT barattolo.Codice_barattolo, apicoltore.Cognome, barattolo.Prezzo, barattolo.Nome_miele, Barattolo.Capienza
+                FROM barattolo JOIN apicoltore ON apicoltore.Codice_apicoltore=barattolo.Codice_apicoltore
                 WHERE barattolo.Codice_cliente= '$Codice_cliente' ";
         $ris = $conn->query($sql) or die("<p> query Fallita</p>");
 
         if ($ris->num_rows > 0) {
-            echo "<p>Ecco tutti i tuoi ordini: spunta quelli che non vuoi più acquistare</p>";
-            echo "<table id='tabella_selezione_libri'>";
-            echo "<tr> <th>Codice Barattolo</th> <th>Codice Apicoltore</th> <th>Prezzo</th> <th> Tipo di miele </th> <th> Capienza</th> <th></th> </tr>";
+            echo "<p>Ecco tutti i tuoi ordini: spunta quelli che vuoi acquistare</p>";
+            echo "<table class='tabella_carrello'";
+            echo "<tr> <th>Codice barattolo</th> <th>Tipo di miele</th> <th>Capienza</th> <th>Nome apicoltore</th> <th>Prezzo</th> <th></th> </tr>";
+            
             foreach ($ris as $riga) {
                 $Codice_Barattolo = $riga["Codice_barattolo"];
-                $Codice_apicoltore = $riga["Codice_apicoltore"];
+                $Cognome = $riga["Cognome"];
                 $Prezzo = $riga["Prezzo"];
                 $Nome_miele = $riga["Nome_miele"];
                 $Capienza = $riga["Capienza"];
@@ -100,23 +123,20 @@ if ($_SESSION["tipologia"] != "cliente") {
                 echo "
                     <tr>
                     <td>$Codice_Barattolo</td>
-					<td>$Codice_apicoltore</td>
-					<td>$Prezzo</td>
 					<td>$Nome_miele</td>
-                    <td>$Capienza</td>
+					<td>$Capienza</td>
+					<td>$Cognome</td>
+                    <td>$Prezzo</td>
                     <td><input type='checkbox' name='cod_libri[]' value='$Codice_Barattolo' /></td>
-
-
                     </tr>
                 ";
             }
         } else {
         }
-        echo "</table>"
-
+        echo "</table>";
+        echo '<p style="text-align: center; padding-top: 10px"><input type="submit" value="Conferma" />'.$Prezzi.'</p>';
         ?>
     </form>
-    <p style="text-align: center; padding-top: 10px"><input type="submit" value="Conferma" /></p>
     </div>
 
 
