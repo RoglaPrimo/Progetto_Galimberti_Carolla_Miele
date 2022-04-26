@@ -58,7 +58,7 @@ if ($_SESSION["tipologia"] != "cliente") {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="footer_scuro">
 
     <div class="header">
         <ul class="header__menu">
@@ -87,7 +87,7 @@ if ($_SESSION["tipologia"] != "cliente") {
         $ris = $conn->query($sql) or die("<p> query Fallita</p>");
 
         if ($ris->num_rows > 0) {
-            echo "<p>Ecco tutti gli ordini</p>";
+            echo "<p>Ecco tutti i tuoi ordini: spunta quelli che non vuoi più acquistare</p>";
             echo "<table id='tabella_selezione_libri'>";
             echo "<tr> <th>Codice Barattolo</th> <th>Codice Apicoltore</th> <th>Prezzo</th> <th> Tipo di miele </th> <th> Capienza</th> <th></th> </tr>";
             foreach ($ris as $riga) {

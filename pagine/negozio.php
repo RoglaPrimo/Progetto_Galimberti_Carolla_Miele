@@ -179,6 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $Data_immagazzinamento = $riga["Data_immagazzinamento"];
                 $ApicoltoreCognome = $riga["Cognome"];
                 $Codice_magazzino = $riga["Codice_magazzino"];
+                $Prezzo = $riga["Prezzo"];
                 echo "
                     <tr>
                         <td><input type='checkbox' name='Codice_barattolo[]' value='$Codice_barattolo'/>$Codice_barattolo</td>
@@ -188,6 +189,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <td>$Data_immagazzinamento</td>
                         <td>$ApicoltoreCognome</td>
                         <td>$Codice_magazzino</td>
+                        <td>$Prezzo</td>
                     </tr>";
             }
             echo "</table>";

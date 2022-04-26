@@ -95,7 +95,7 @@ if ($_SESSION["tipologia"] != "apicoltore") {
                     <?php
                     echo "<table class='tabella_input_2_colonne'>";
                     echo "<p class='paddingaggiuntivo' id='cursive'> Ora seleziona un magazzino libero in cui il tuo prodotto verrà depositato: </p>";
-                    echo "<tr>  <th>CODICE DEL MAGAZZINO</th> <th>COMUNE</th> <th>VIA</th> <th>CIVICO</th> </tr>";
+                    echo "<tr>  <th style='text-align:center'>CODICE DEL MAGAZZINO</th> <th style='text-align:center'>COMUNE</th> <th style='text-align:center'>VIA</th> <th style='text-align:center'>CIVICO</th> </tr>";
                     $sql2 = " SELECT magazzino.Codice_magazzino, magazzino.Citta,  magazzino.Via, magazzino.Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza
                             FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
                             GROUP BY magazzino.Codice_magazzino
@@ -115,10 +115,10 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
                         echo "
                         <tr>
-                            <td><input type='radio' name='Codice_magazzino' value='$Codice_magazzino'/> $Codice_magazzino</td>
-                            <td>$Citta</td>
-                            <td>$Via</td>
-                            <td>$Civico</td>
+                            <td style='text-align:center'><input type='radio' name='Codice_magazzino' value='$Codice_magazzino'/> $Codice_magazzino</td>
+                            <td style='text-align:center'>$Citta</td>
+                            <td style='text-align:center'>$Via</td>
+                            <td style='text-align:center'>$Civico</td>
                         </tr>
                     ";
                     };
