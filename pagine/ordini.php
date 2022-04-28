@@ -94,7 +94,7 @@ if ($_SESSION["tipologia"] != "cliente") {
                         WHERE barattolo.Codice_barattolo='$p'";
                     $ris1=$conn->query($sql1) or die("<p> query Fallita</p>");
                     $ris1=$ris1->fetch_assoc();
-                    $Prezzi=$Prezzi+intval($ris1["Prezzo"]);
+                    $Prezzi=$Prezzi+floatval($ris1["Prezzo"]);
 
                     $conn->query('SET FOREIGN_KEY_CHECKS=0;');
                     $sql2 = " DELETE FROM barattolo WHERE barattolo.Codice_barattolo='$p'";
@@ -109,7 +109,7 @@ if ($_SESSION["tipologia"] != "cliente") {
         $ris = $conn->query($sql) or die("<p> query Fallita</p>");
 
         if ($ris->num_rows > 0) {
-            echo "<p>Ecco tutti i tuoi ordini: spunta quelli che vuoi acquistare</p>";
+            echo "<p id='cursive'>Ecco tutti i tuoi ordini: spunta quelli che vuoi acquistare</p>";
             echo "<table class='tabella_carrello'";
             echo "<tr> <th>Codice barattolo</th> <th>Tipo di miele</th> <th>Capienza</th> <th>Nome apicoltore</th> <th>Prezzo</th> <th></th> </tr>";
             
@@ -131,10 +131,14 @@ if ($_SESSION["tipologia"] != "cliente") {
                     </tr>
                 ";
             }
+            echo "</table>";
+            echo '<p style="text-align: center; padding-bottom: 10px"><input class="caselle" id="accedi" type="submit" value="Conferma" /></p>';
+            
         } else {
+            echo "<p id='cursive' style='padding: 20px'>Al momento non è presente alcun prodotto nel suo carrello. Visita il <a class='hover' href='negozio.php'>nostro negozio</a></p>";
         }
-        echo "</table>";
-        echo '<p style="text-align: center; padding-top: 10px"><input type="submit" value="Conferma" />'.$Prezzi.'</p>';
+        echo "<p id='cursive' style='padding-bottom: 20px'>Prezzo totale dell'ordine: $Prezzi euro</p>";
+        
         ?>
     </form>
     </div>

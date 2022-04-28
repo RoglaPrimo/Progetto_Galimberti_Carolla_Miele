@@ -559,8 +559,39 @@ body {
 
 .tabella_carrello
 {
-    
+    text-align: center;
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    font-family: 'Lobster',cursive;
+    font-size:23px;
 }
+
+.tabella_carrello th
+{
+    color: black;
+    padding-bottom: 10px;
+}
+
+/* .tabella_carrello td input
+{
+    margin: 0px;
+    margin-left: 50px;
+    float: left;
+} */
+
+.hover:hover
+{
+    color: white;
+    text-decoration: underline;
+}
+
+/* .hover1:hover
+{
+    color: white;
+} */
 
 #cursive{
     font-family: 'Lobster',cursive;

@@ -70,14 +70,27 @@ if ($_SESSION["tipologia"] != "apicoltore") {
         </ul>
     </div>
 
+    <?php
+        $sql2 = " SELECT magazzino.Codice_magazzino, magazzino.Citta,  magazzino.Via, magazzino.Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza
+                FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
+                GROUP BY magazzino.Codice_magazzino
+                HAVING Numero_barattoli < Capienza";
+    
+        $ris2 = $conn->query($sql2) or die("<p>Query fallita!-$conn->error</p>");
+
+    echo '
     <div class="container__Intro">
     <div class="container__Intro__text reveal" id="backwhite2" style="background-color:palegreen; color:black;">
-        <h1>INSERISCI LE INFORMAZIONI DEL BARATTOLO CHE VUOI VENDERE:</h1>
+      ';
+      
+    if ($ris2->num_rows > 0) {
+      echo '
+    <h1>INSERISCI LE INFORMAZIONI DEL BARATTOLO CHE VUOI VENDERE:</h1>
         <form action="vendite.php" method="post">
             <table class="tabella_input_2_colonne">
                 <tr>
                     <td colspan="2">Tipo di miele: </td>
-                    <td colspan="2"><input class="caselle" type="text" name="Miele" value=""></td>
+                    <td colspan="2"><input class="caselle" type="text" name="Miele" value="" required></td>
                 </tr>
                 <tr>
 
@@ -89,20 +102,19 @@ if ($_SESSION["tipologia"] != "apicoltore") {
                 </tr>
                 <tr>
                     <td colspan="2">Data di confezionamento: </td>
-                    <td colspan="2"><input class="caselle" type="date" name="Data_confezionamento" <?php echo "value = '$Data_confezionamento'" ?>></td>
+                    <td colspan="2"><input class="caselle" type="date" name="Data_confezionamento" value = $Data_confezionamento></td>
                 </tr>
                 <tr>
-                    <?php
-                    echo "<table class='tabella_input_2_colonne'>";
-                    echo "<p class='paddingaggiuntivo' id='cursive'> Ora seleziona un magazzino libero in cui il tuo prodotto verrà depositato: </p>";
-                    echo "<tr>  <th style='text-align:center'>CODICE DEL MAGAZZINO</th> <th style='text-align:center'>COMUNE</th> <th style='text-align:center'>VIA</th> <th style='text-align:center'>CIVICO</th> </tr>";
-                    $sql2 = " SELECT magazzino.Codice_magazzino, magazzino.Citta,  magazzino.Via, magazzino.Civico, COUNT(Codice_barattolo) AS Numero_barattoli, magazzino.Capienza
-                            FROM magazzino JOIN barattolo ON barattolo.Codice_magazzino=magazzino.Codice_magazzino
-                            GROUP BY magazzino.Codice_magazzino
-                            HAVING Numero_barattoli < Capienza";
+                    
+                ';    
+                    
 
-                    $ris2 = $conn->query($sql2) or die("<p>Query fallita!-$conn->error</p>");
+                    
 
+                    
+                        echo "<table class='tabella_input_2_colonne' style='margin-bottom: 0px'>";
+                        echo "<p class='paddingaggiuntivo' id='cursive'> Ora seleziona un magazzino libero in cui il tuo prodotto verrà depositato: </p>";
+                        echo "<tr>  <th style='text-align:center'>CODICE DEL MAGAZZINO</th> <th style='text-align:center'>COMUNE</th> <th style='text-align:center'>VIA</th> <th style='text-align:center'>CIVICO</th> </tr>";
                     foreach ($ris2 as $riga) {
                         $Codice_magazzino = $riga["Codice_magazzino"];
                         $Citta = $riga["Citta"];
@@ -123,11 +135,18 @@ if ($_SESSION["tipologia"] != "apicoltore") {
                     ";
                     };
                     echo "</table>";
-                    ?>
+                    echo '<p style="text-align: center; padding-bottom: 10px"><input class="caselle" id="accedi" type="submit" value="Vendi ora" /></p>';
+                    }
+                    else
+                    {
+                        echo "<p id='cursive' style='padding: 20px'>Spiacenti, al momento tutti i nostri magazzini sono pieni. Riprovi più tardi</p>";
+                    }
+                    
 
-                </tr>
-            </table>
-            <p><input class="caselle" id="accedi" type="submit" value="Vendi ora"></p>
+                echo "
+            </tr>
+            </table>";
+            ?>
             <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Miele = $_POST["Miele"];
@@ -147,9 +166,9 @@ if ($_SESSION["tipologia"] != "apicoltore") {
         // $sql2="UPDATE barattolo
         // 			SET barattolo.Prezzo = '$prezzo'
         // 			WHERE cod_libro = '$libro'"; 
-
-        echo "<p> Al termine della transazione verrai pagato $Prezzo euro</p>";
-
+        if ($ris2->num_rows > 0) {
+        echo "<p id='cursive' style='margin-top: 10px'> Al termine della transazione verrai pagato $Prezzo euro</p>";
+        }
 
         $Codice_magazzino = $_SESSION["Codice_magazzino"];
         // $Citta=$_SESSION["Citta"];
@@ -173,10 +192,11 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
         $conn->close();
     }
+    
+        echo"</form>
+    </div>
+    </div>";
     ?>
-        </form>
-    </div>
-    </div>
     <video autoplay muted loop id="video-back">
         <source src="../immagini/Api, l'impollinazione - bees pollination Macro 1080p 60 fps Nikon 1 J2.mp4" type="video/mp4">
     </video>

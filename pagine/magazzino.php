@@ -101,14 +101,13 @@ if ($_SESSION["tipologia"] != "apicoltore") {
 
                 if ($ris2->num_rows == 0) {
                     echo "
-                <table class='tab_dati_personali2'>
-                    <tr> <th style='color: black;' class='paddingaggiuntivo'>Codice del magazzino</th> <th style='color: black;' >Comune</th></tr>
+                <table class='tab_dati_personali2' style=''>
+                    <tr> <th style='color: black; text-align: center' class='paddingaggiuntivo'>Codice del magazzino</th> <th style='color: black; text-align: center' >Comune</th> </tr>
                     <tr>
                             <td class='Login paddingaggiuntivo'  style='text-align:center'>$Codice_magazzino</td>
-                            <td  class='Login paddingaggiuntivo' style='text-align:center'>$Citta</td>
+                            <td class='Login paddingaggiuntivo' style='text-align:center'>$Citta</td>
                     </tr>
-                    <tr><td colspan='2'><p>Nessuno dei tuoi barattoli è ancora <br>
-                    all'interno del magazzino</p></td></tr>
+                    <tr><td colspan='2'><p>Nessuno dei tuoi barattoli è ancora all'interno del magazzino</p></td></tr>
                 ";
                 } else {
                     echo "

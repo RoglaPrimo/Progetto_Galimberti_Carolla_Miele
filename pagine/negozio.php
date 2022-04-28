@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" name="Erba_medica" value="Erba_medica"> Miele di erba medica
+                        <input type="checkbox" name="Erba_medica" value="Erba medica"> Miele di erba medica
                     </td>
                     <td> <input type="checkbox" name="Eucalipto" value="Eucalipto"> Miele d'eucalipto
                     </td>
@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </tr>
                 <tr>
                     <td colspan="2" class="centrato">
-                        <input class="caselle" style="margin-bottom: 20px" type="submit" value="Filtra">
+                        <input class="caselle" id="accedi" style="margin-bottom: 5px" type="submit" value="Filtra">
                     </td>
                 </tr>
             </table>
@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ris = $conn->query($sql) or die("<p>Query fallita!-$conn->error</p>");
 
         if ($ris->num_rows > 0) {
-            echo "<p>Scegli tra i barattoli trovati secondo le tue preferenze.</p>";
+            echo "<p id='cursive'>Scegli tra i barattoli trovati secondo le tue preferenze.</p>";
             echo "<table class='ape'>";
             echo "<tr>  <th>Codice del barattolo</th> <th>Tipo di miele</th> <th>Capienza del barattolo</th> <th>Data di confezionamento</th> <th>Data di immagazzinamento</th> <th>Apicoltore</th> <th>Codice magazzino</th> <th>Prezzo del barattolo</th></tr>";
 
@@ -193,9 +193,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>";
             }
             echo "</table>";
+            echo '<p><input  class="caselle" id="accedi" style="margin-bottom:30px;" type="submit" value="Aggiungi al carrello"></p>';
+        }
+        else
+        {
+            echo "<p id='cursive' style='padding: 20px'>Spiacenti, al momento non sono presenti i barattoli che cerchi</p>";
         }
 
-        echo '<p><input  class="caselle" style="margin-bottom:30px;" type="submit" value="Aggiungi al carrello"></p>';
+        
         echo '</form>'; 
     }
     ?>

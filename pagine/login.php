@@ -100,7 +100,7 @@ $db_password = "";
 
                 echo "";
                 if ($ris->num_rows == 0) {
-                    echo "<p>Utente non trovato o password errata</p>";
+                    echo "<p id='cursive' style='padding: 20px'>Utente non trovato o password errata</p>";
                     $conn->close();
                 } else {
                     

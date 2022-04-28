@@ -18,10 +18,28 @@ if (isset($_POST["Via"])) $Via = $_POST["Via"]; else $Via = "";
 if (isset($_POST["Civico"])) $Civico = $_POST["Civico"]; else $Civico = "";
 if (isset($_POST["tipologia"])) $tipologia = $_POST["tipologia"]; else $tipologia = "";
 
-if ($tipologia == "apicoltore") {
+$conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+if ($conn->connect_error) {
+    die("<p id='cursive' style='padding: 20px'>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
+}
+
+$myquery = "SELECT Cognome
+			FROM $tipologia
+			WHERE E_mail='$E_mail'";
+            //echo $myquery;
+
+if (!empty($tipologia))
+{
+    $ris = $conn->query($myquery) or die("<p>Query fallita! ".$tipologia." ".$E_mail."</p>");
+}
+
+$esistente=false;
+if($ris->num_rows > 0) $esistente=true;
+
+if ($tipologia == "apicoltore" and $_POST["Password"]==$_POST["Conferma_Password"] and !$esistente) {
     header("Refresh:5; URL=home_apicoltore.php");
 } 
-if ($tipologia == "cliente") {
+if ($tipologia == "cliente" and $_POST["Password"]==$_POST["Conferma_Password"] and !$esistente) {
     header("Refresh:5; URL=home_cliente.php");
 }
 ?>
@@ -127,21 +145,13 @@ if ($tipologia == "cliente") {
                 if ($_POST["E_mail"] == "" or $_POST["Password"] == "") {
                     echo "Email e password non possono essere vuoti!";
                 } elseif ($_POST["Password"] != $_POST["Conferma_Password"]) {
-                    echo "Le password inserite non corrispondono";
+                    echo "<p id='cursive' style='padding: 20px'>Le password inserite non corrispondono</p>";
                 } else {
-                    $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-                    if ($conn->connect_error) {
-                        die("<p>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
-                    }
+                    
 
-                    $myquery = "SELECT E_mail
-						    FROM $tipologia
-						    WHERE E_mail='" . $_POST["E_mail"] . "'";
-                    //echo $myquery;
-
-                    $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
-                    if ($ris->num_rows > 0) {
-                        echo "<p>Sei già registrato! Vai alla pagina di login: <a href = 'login.php'>Vai alla pagina di login</a></p>";
+                    
+                    if ($esistente) {
+                        echo "<p id='cursive' style='padding: 20px'>Sei già registrato! <a class='hover' style='text-decoration: none' href = 'login.php'>Vai alla pagina di login</a></p>";
                     } else {
                         $_SESSION["E_mail"]=$E_mail;
                         $_SESSION["Password"]=$Password;
@@ -169,11 +179,11 @@ if ($tipologia == "cliente") {
                             $tipologia=$_SESSION["tipologia"];
 
                             $conn->close();
-                            echo "<p>Registrazione effettuata con successo!<br>Sarai ridirezionato alla home tra 5 secondi.</p>";
+                            echo "<p id='cursive' style='padding: 20px'>Registrazione effettuata con successo!<br>Sarai ridirezionato alla home tra 5 secondi.</p>";
                             
                             
                         } else {
-                            echo "<p>Non è stato possibile effettuare la registrazione per il seguente motivo: </p>" . $conn->error;
+                            echo "<p id='cursive' style='padding: 20px'>Non è stato possibile effettuare la registrazione per il seguente motivo: </p>" . $conn->error;
                         }
                     }
                 }
