@@ -180,6 +180,28 @@ if ($tipologia == "cliente" and $_POST["Password"]==$_POST["Conferma_Password"] 
                             $_SESSION["tipologia"] = $_POST["tipologia"];
                             $tipologia=$_SESSION["tipologia"];
 
+                            if ($tipologia == "apicoltore") {
+                                $sql6= "SELECT apicoltore.Codice_apicoltore AS codice
+                                        FROM apicoltore
+                                        WHERE apicoltore.E_mail= '$E_mail' AND apicoltore.Password='$Password'";
+                        
+                                $ris6 = $conn->query($sql6) or die("<p>Query fallita! " . $conn->error . "</p>");
+    
+                                $row = $ris6->fetch_assoc();
+                                $_SESSION["Codice_utente"]= $row["codice"];
+                            }
+                            else
+                            {
+                                $sql6= "SELECT cliente.Codice_cliente AS codice
+                                        FROM cliente
+                                        WHERE cliente.E_mail= '$E_mail' AND cliente.Password='$Password'";
+                        
+                                $ris6 = $conn->query($sql6) or die("<p>Query fallita! " . $conn->error . "</p>");
+    
+                                $row = $ris6->fetch_assoc();
+                                $_SESSION["Codice_utente"]= $row["codice"];
+                            }
+
                             $conn->close();
                             echo "<p id='cursive' style='padding: 20px'>Registrazione effettuata con successo!<br>Sarai ridirezionato alla home tra 5 secondi.</p>";
                             

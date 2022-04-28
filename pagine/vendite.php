@@ -90,7 +90,25 @@ if ($_SESSION["tipologia"] != "apicoltore") {
             <table class="tabella_input_2_colonne">
                 <tr>
                     <td colspan="2">Tipo di miele: </td>
-                    <td colspan="2"><input class="caselle" type="text" name="Miele" value="" required></td>
+                    <td colspan="2">
+                        <select name="Miele" id="cursive" class="caselle">
+                        <option value="Acacia" id="cursive">Acacia</option> 
+                        <option value="Castagno" id="cursive">Castagno</option>  
+                        <option value="Erba medica" id="cursive">Erba medica</option> 
+                        <option value="Eucalipto" id="cursive">Eucalipto</option>
+                        <option value="Girasole" id="cursive">Girasole</option>
+                        <option value="Millefiori" id="cursive">Millefiori</option>
+                        <option value="Rododendro" id="cursive">Rododendro</option>
+                        <option value="Tarassaco" id="cursive">Tarassaco</option>
+                        <option value="Tiglio" id="cursive">Tiglio</option>
+                        <option value="Timo" id="cursive">Timo</option>    
+                        </select>
+                    </td>
+                
+                
+                
+                
+                
                 </tr>
                 <tr>
 

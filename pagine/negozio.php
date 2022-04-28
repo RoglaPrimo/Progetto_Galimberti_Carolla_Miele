@@ -134,10 +134,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </tr>
                 <tr>
                     <td colspan="2" class="centrato">
-                        Capienza: <select name="Capienza" >
-                        <option value="250" id="cursive">250</option> 
-                        <option value="500" id="cursive">500</option>  
-                        <option value="1000" id="cursive">1000</option>      
+                        Capienza: <select name="Capienza" class="caselle" id="cursive">
+                        <option value="250" id="cursive">250 grammi</option> 
+                        <option value="500" id="cursive">500 grammi</option>  
+                        <option value="1000" id="cursive">1000 grammi</option>     
                         </select>
                     </td>
                 </tr>
