@@ -134,7 +134,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </tr>
                 <tr>
                     <td colspan="2" class="centrato">
-                        Capienza: <input class="caselle" type="number" name="Capienza" value="">
+                        Capienza: <select name="Capienza" >
+                        <option value="250" id="cursive">250</option> 
+                        <option value="500" id="cursive">500</option>  
+                        <option value="1000" id="cursive">1000</option>      
+                        </select>
                     </td>
                 </tr>
                 <tr>

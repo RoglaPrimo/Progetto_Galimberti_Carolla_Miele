@@ -34,14 +34,16 @@ if (!empty($tipologia))
 }
 
 $esistente=false;
+if(isset($ris)){
 if($ris->num_rows > 0) $esistente=true;
-
+}
 if ($tipologia == "apicoltore" and $_POST["Password"]==$_POST["Conferma_Password"] and !$esistente) {
     header("Refresh:5; URL=home_apicoltore.php");
 } 
 if ($tipologia == "cliente" and $_POST["Password"]==$_POST["Conferma_Password"] and !$esistente) {
     header("Refresh:5; URL=home_cliente.php");
 }
+
 ?>
 
 <!DOCTYPE html>
