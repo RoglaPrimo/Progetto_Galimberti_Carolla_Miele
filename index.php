@@ -46,11 +46,10 @@
     <div class="container__Intro">
         <div class="container__Intro__text reveal">
             <h2>IL NOSTRO NEGOZIO</h2>
-            <p>l territorio corrispondente all'odierno Turkmenistan è stato abitato fin dall'antichità dalle tribù dei Turkmeni, probabilmente provenienti dai Monti Altai. I primi insediamenti umani nell'area sono databili tra il 7.000 e il 5.000 a.C. In italiano antico era nota come Turcomannia, ovvero la terra dei Turcomanni.</p>
-            <p>Il territorio fu in seguito conquistato da numerose diverse civilizzazioni. I persiani achemenidi conquistarono il territorio nel VI secolo a.C., Alessandro Magno occupò il Turkmenistan nel IV secolo a.C. Dopo circa 150 anni il controllo macedone finì e nella regione nacque nel 247 a.C. l'Impero partico, la cui capitale fu stabilita a Nisa, a 25 km dalla moderna capitale Aşgabat.</p>
-            <p>La via della seta passava per Merv, capitale dell'antico Turkmenistan (detto Margiana ai tempi dei Romani)</p>
-            <p>Durante questo periodo il Turkmenistan assunse importanza come tappa della via della seta, la principale via per gli scambi commerciali tra Asia ed Europa.</p>
-            <p>L'Impero partico cadde tra il 224 e il 228, seguito dalla dominazione dei Sasanidi (III secolo) e successivamente degli Eftaliti (V secolo), quando il cristianesimo divenne la religione predominante.</p>
+            <p>Il nostro negozio Nasce da una passione comune per questo meraviglioso prodotto che è il miele. Non esiste rimedio naturale più versatile: volgia di dolce? Bevi del miele</p>
+            <p>Hai un po' di mal di gola? un cucchiaino di latte e del miele  e tutto sarà a posto in un batter d'occhio. Non ci credi? Vieni a provare tutte e dieci varietà di miele che offriamo. </p>
+            <p>Tutti i barattoli sono prodotti da apicoltori da noi selezioniamo con cura, per darti la migliore qualità possibile. Biologici e non trattati, i nostri mieli soddisferanno ogni tua voglia, concedendoti quell'attimo di intensa soddisfazione ognuno di noi ha bisogno  di provare almeno una volta al giorno </p>
+            <p>Vieni a scoprire tutti i nostri prodotti!. Ci troviamo a Cambiago, proprio a ridosso della piazza del paese.</p>
         </div>
         <video autoplay muted loop id="video-back">
             <source src="immagini/Api, l'impollinazione - bees pollination Macro 1080p 60 fps Nikon 1 J2.mp4" type="video/mp4">
