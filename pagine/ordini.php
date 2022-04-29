@@ -72,7 +72,7 @@ if ($_SESSION["tipologia"] != "cliente") {
         </ul>
     </div>
 
-    <div class="container__Intro__text reveal" id="backwhite">
+    <div class="container__Intro__text reveal" id="backwhite3">
     <h1>Ecco qui il suo carrello:</h1>
    
             
@@ -103,6 +103,23 @@ if ($_SESSION["tipologia"] != "cliente") {
                 }
             }
 
+        if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["elimina"]))
+        {
+            $Codice_Barattolo=$_POST["vasetto"];
+
+            $conn->query('SET FOREIGN_KEY_CHECKS=0;');
+            $sql10 = "UPDATE barattolo
+                        SET barattolo.Codice_cliente = NULL
+                        WHERE barattolo.Codice_barattolo = '$Codice_Barattolo'";
+            
+
+            if($conn->query($sql10) === true) {
+            } else {
+                echo "Error updating record: " . $conn->error;
+            }
+            $conn->query('SET FOREIGN_KEY_CHECKS=1;');
+        }
+
         $sql = "  SELECT barattolo.Codice_barattolo, apicoltore.Cognome, barattolo.Prezzo, barattolo.Nome_miele, Barattolo.Capienza
                 FROM barattolo JOIN apicoltore ON apicoltore.Codice_apicoltore=barattolo.Codice_apicoltore
                 WHERE barattolo.Codice_cliente= '$Codice_cliente' ";
@@ -111,7 +128,7 @@ if ($_SESSION["tipologia"] != "cliente") {
         if ($ris->num_rows > 0) {
             echo "<p id='cursive'>Ecco tutti i tuoi ordini: spunta quelli che vuoi acquistare</p>";
             echo "<table class='tabella_carrello'";
-            echo "<tr> <th>Codice barattolo</th> <th>Tipo di miele</th> <th>Capienza</th> <th>Nome apicoltore</th> <th>Prezzo</th> <th></th> <th></th> </tr>";
+            echo "<tr> <th>Elimina</th> <th>Codice barattolo</th> <th>Tipo di miele</th> <th>Capienza</th> <th>Nome apicoltore</th> <th>Prezzo</th> <th></th> </tr>";
             
             foreach ($ris as $riga) {
                 $Codice_Barattolo = $riga["Codice_barattolo"];
@@ -122,13 +139,20 @@ if ($_SESSION["tipologia"] != "cliente") {
 
                 echo "
                     <tr>
+                    <td>
+                        <form action=\"$_SERVER[PHP_SELF]\" method='post'>
+                            <p>
+                                <input type='submit' name='elimina' value='X'>
+                                <input type='hidden' name='vasetto' value='$Codice_Barattolo'>
+                            </p>
+                        </form>
+                    </td>
                     <td>$Codice_Barattolo</td>
 					<td>$Nome_miele</td>
 					<td>$Capienza</td>
 					<td>$Cognome</td>
                     <td>$Prezzo</td>
                     <td><input type='checkbox' name='cod_libri[]' value='$Codice_Barattolo' /></td>
-                    <td><input type='checkbox' name='cod_libri1[]' value='$Codice_Barattolo' /></td>
                     </tr>
                 ";
             }
