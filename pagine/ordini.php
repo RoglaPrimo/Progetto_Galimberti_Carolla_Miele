@@ -142,7 +142,7 @@ if ($_SESSION["tipologia"] != "cliente") {
                     <td>
                         <form action=\"$_SERVER[PHP_SELF]\" method='post'>
                             <p>
-                                <input type='submit' name='elimina' value='X'>
+                                <input type='submit' name='elimina' value='X' class='bottone'>
                                 <input type='hidden' name='vasetto' value='$Codice_Barattolo'>
                             </p>
                         </form>
@@ -152,7 +152,7 @@ if ($_SESSION["tipologia"] != "cliente") {
 					<td>$Capienza</td>
 					<td>$Cognome</td>
                     <td>$Prezzo</td>
-                    <td><input type='checkbox' name='cod_libri[]' value='$Codice_Barattolo' /></td>
+                    <td><input type='checkbox' name='cod_libri[]' value='$Codice_Barattolo' class='bottone1'/></td>
                     </tr>
                 ";
             }

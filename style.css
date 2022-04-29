@@ -609,3 +609,21 @@ body {
 .ape td{
     padding:7px;
 }
+
+.bottone
+{
+    border-radius: 7px;
+    font-family: 'Lobster',cursive;
+    /* background-color: rgba(0, 0, 0, 0); */
+    background-color: white;
+    border: 2px solid black;
+    font-size: 20px;
+}
+
+.bottone1
+{
+    border-radius: 7px;
+    font-family: 'Lobster',cursive;
+    background-color: white;
+    border: 2px solid black;
+}
