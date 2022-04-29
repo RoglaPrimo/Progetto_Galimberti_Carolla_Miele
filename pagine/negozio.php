@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </tr>
                 <tr>
                     <td colspan="2" class="centrato">
-                        <input class="caselle" id="accedi" style="margin-bottom: 5px" type="submit" value="Filtra">
+                        <input class="caselle" id="accedi" style="margin-bottom: 20px" type="submit" value="Filtra">
                     </td>
                 </tr>
             </table>

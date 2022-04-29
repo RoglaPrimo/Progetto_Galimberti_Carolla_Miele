@@ -111,7 +111,7 @@ if ($_SESSION["tipologia"] != "cliente") {
         if ($ris->num_rows > 0) {
             echo "<p id='cursive'>Ecco tutti i tuoi ordini: spunta quelli che vuoi acquistare</p>";
             echo "<table class='tabella_carrello'";
-            echo "<tr> <th>Codice barattolo</th> <th>Tipo di miele</th> <th>Capienza</th> <th>Nome apicoltore</th> <th>Prezzo</th> <th></th> </tr>";
+            echo "<tr> <th>Codice barattolo</th> <th>Tipo di miele</th> <th>Capienza</th> <th>Nome apicoltore</th> <th>Prezzo</th> <th></th> <th></th> </tr>";
             
             foreach ($ris as $riga) {
                 $Codice_Barattolo = $riga["Codice_barattolo"];
@@ -128,6 +128,7 @@ if ($_SESSION["tipologia"] != "cliente") {
 					<td>$Cognome</td>
                     <td>$Prezzo</td>
                     <td><input type='checkbox' name='cod_libri[]' value='$Codice_Barattolo' /></td>
+                    <td><input type='checkbox' name='cod_libri1[]' value='$Codice_Barattolo' /></td>
                     </tr>
                 ";
             }
@@ -142,7 +143,6 @@ if ($_SESSION["tipologia"] != "cliente") {
         ?>
     </form>
     </div>
-
 
 
     <?php
